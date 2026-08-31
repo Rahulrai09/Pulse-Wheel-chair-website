@@ -185,16 +185,7 @@ export default function Home() {
       {/* ── Top bar ─────────────────────────────────────────────────────────── */}
       <header className="bg-offwhite text-navy">
         {/* Utility strip */}
-        <div className="border-b border-navy/5 text-xs">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
-            <span className="text-warm-gray">Free delivery on orders above ₹5,000</span>
-            <div className="hidden gap-4 sm:flex">
-              <a href="#" className="text-warm-gray hover:text-orange transition-colors">Track order</a>
-              <a href="#" className="text-warm-gray hover:text-orange transition-colors">Help</a>
-              <a href="#" className="text-warm-gray hover:text-orange transition-colors">Contact</a>
-            </div>
-          </div>
-        </div>
+        <TrustTicker />
 
         {/* Main nav */}
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -375,8 +366,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Cycling Trust Ticker ───────────────────────────────────────────── */}
-      <TrustTicker />
+      {/* ── Trust badges row ────────────────────────────────────────────────── */}
+      <section className="mx-auto mt-20 w-full max-w-7xl px-6">
+        <div className="grid grid-cols-2 gap-6 rounded-2xl bg-white p-8 shadow-sm lg:grid-cols-4">
+          {[
+            { icon: <DeliveryIcon />, title: "Free delivery", desc: "On all orders above ₹5,000" },
+            { icon: <EmiIcon />, title: "Easy EMI", desc: "0% interest available" },
+            { icon: <CertifiedIcon />, title: "ISO certified", desc: "Medical-grade quality" },
+            { icon: <TrialIcon />, title: "7-day trial", desc: "Easy returns, no questions" },
+          ].map((b) => (
+            <div key={b.title} className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-offwhite text-orange">
+                {b.icon}
+              </span>
+              <div>
+                <p className="text-sm font-bold text-navy">{b.title}</p>
+                <p className="mt-0.5 text-xs text-warm-gray">{b.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* ── Footer ──────────────────────────────────────────────────────────── */}
       <footer className="mt-12 bg-navy text-white">

@@ -8,7 +8,7 @@ const phrases = [
   "Lowest Price",
 ];
 
-export default function TrustTicker() {
+export default function TopUtilityTicker() {
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
@@ -25,16 +25,16 @@ export default function TrustTicker() {
   }, []);
 
   return (
-    <section className="mx-auto mt-16 w-full max-w-7xl px-6">
-      <div className="flex min-h-16 items-center justify-center rounded-2xl bg-navy px-6 py-4 text-center text-white shadow-sm">
+    <div className="bg-navy text-white text-xs py-2 px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-center text-center">
         <span
-          className={`text-base font-medium tracking-wide transition-opacity duration-300 ${
+          className={`font-medium tracking-wide transition-opacity duration-300 ${
             fade ? "opacity-100" : "opacity-0"
           }`}
         >
           {phrases[index]}
         </span>
       </div>
-    </section>
+    </div>
   );
 }
