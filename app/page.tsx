@@ -1,4 +1,5 @@
 import Image from "next/image";
+import TrustTicker from "./components/TrustTicker";
 
 /* ──────────────────────────────────────────────
    Pulse Wheelchair — Homepage
@@ -374,27 +375,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Trust badges row ────────────────────────────────────────────────── */}
-      <section className="mx-auto mt-20 w-full max-w-7xl px-6">
-        <div className="grid grid-cols-2 gap-6 rounded-2xl bg-white p-8 shadow-sm lg:grid-cols-4">
-          {[
-            { icon: <DeliveryIcon />, title: "Free delivery", desc: "On all orders above ₹5,000" },
-            { icon: <EmiIcon />, title: "Easy EMI", desc: "0% interest available" },
-            { icon: <CertifiedIcon />, title: "ISO certified", desc: "Medical-grade quality" },
-            { icon: <TrialIcon />, title: "7-day trial", desc: "Easy returns, no questions" },
-          ].map((b) => (
-            <div key={b.title} className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-offwhite text-orange">
-                {b.icon}
-              </span>
-              <div>
-                <p className="text-sm font-bold text-navy">{b.title}</p>
-                <p className="mt-0.5 text-xs text-warm-gray">{b.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* ── Cycling Trust Ticker ───────────────────────────────────────────── */}
+      <TrustTicker />
 
       {/* ── Footer ──────────────────────────────────────────────────────────── */}
       <footer className="mt-12 bg-navy text-white">
@@ -402,10 +384,14 @@ export default function Home() {
           <div className="grid gap-8 lg:grid-cols-4">
             {/* Brand + newsletter */}
             <div className="lg:col-span-2">
-              <a href="/" className="flex flex-col leading-none">
-                <span className="font-serif text-2xl font-semibold tracking-tight text-white">
-                  PULSE
-                </span>
+              <a href="/" className="flex flex-col items-start leading-none gap-1">
+                <Image
+                  src="/pulse-logo-white.png"
+                  alt="Pulse Mobility & Care"
+                  width={160}
+                  height={40}
+                  className="h-10 w-auto object-contain"
+                />
                 <span className="text-[0.55rem] font-medium uppercase tracking-[0.25em] text-white/50">
                   Mobility &amp; Care
                 </span>
