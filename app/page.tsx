@@ -1,69 +1,508 @@
-import Image from "next/image";
+/* ──────────────────────────────────────────────
+   Pulse Wheelchair — Homepage
+   Next.js 16 · Tailwind CSS v4 · Server Component
+   ────────────────────────────────────────────── */
+
+// ─── Inline SVG icon components (no external deps) ────────────────────────────
+
+/** Reusable wrapper so every category icon is the same size / color */
+function CategoryIcon({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-offwhite text-navy">
+      {children}
+    </div>
+  );
+}
+
+/* ─── Small SVG icons ────────────────────────────────────────────────────────── */
+
+function WheelchairIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <circle cx="9" cy="20" r="2.5" />
+      <circle cx="18" cy="20" r="2.5" />
+      <path d="M9 17.5V8h6l3 9.5" />
+      <circle cx="9" cy="5" r="2" />
+    </svg>
+  );
+}
+
+function ElectricIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+    </svg>
+  );
+}
+
+function PediatricIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <circle cx="12" cy="6" r="3" />
+      <path d="M9 21V12h6v9" />
+      <path d="M8 12h8" />
+    </svg>
+  );
+}
+
+function TransportIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <rect x="3" y="6" width="18" height="10" rx="2" />
+      <circle cx="8" cy="19" r="2" />
+      <circle cx="16" cy="19" r="2" />
+    </svg>
+  );
+}
+
+function CushionIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <rect x="3" y="8" width="18" height="10" rx="3" />
+      <path d="M3 13h18" />
+    </svg>
+  );
+}
+
+function SparePartsIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>
+  );
+}
+
+function DeliveryIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6">
+      <rect x="1" y="3" width="15" height="13" rx="1" />
+      <path d="M16 8h4l3 5v5h-7V8z" />
+      <circle cx="5.5" cy="19.5" r="2.5" />
+      <circle cx="18.5" cy="19.5" r="2.5" />
+    </svg>
+  );
+}
+
+function EmiIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6">
+      <rect x="2" y="5" width="20" height="14" rx="2" />
+      <path d="M2 10h20" />
+    </svg>
+  );
+}
+
+function CertifiedIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.77 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+    </svg>
+  );
+}
+
+function TrialIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6">
+      <path d="M9 11l3 3L22 4" />
+      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+    </svg>
+  );
+}
+
+function ShieldIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    </svg>
+  );
+}
+
+function FoldIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+      <path d="M4 19h16M4 5h16M12 5v14M8 9l4-4 4 4M8 15l4 4 4-4" />
+    </svg>
+  );
+}
+
+function FeatherIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
+      <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
+      <path d="M16 8L2 22" />
+      <path d="M17.5 15H9" />
+    </svg>
+  );
+}
+
+/* ─── Product data ───────────────────────────────────────────────────────────── */
+
+const products = [
+  { name: "Pulse Lite", spec: "Aluminium · 9.8 kg · 100 kg capacity", price: "₹12,499" },
+  { name: "Pulse Flex Pro", spec: "Foldable · 11 kg · 120 kg capacity", price: "₹16,999" },
+  { name: "Pulse E-Motion", spec: "Electric · 24 V · 150 kg capacity", price: "₹42,999" },
+  { name: "Pulse Junior", spec: "Pediatric · 7 kg · 60 kg capacity", price: "₹9,999" },
+  { name: "Pulse Transit", spec: "Transport · 8.5 kg · 110 kg capacity", price: "₹11,499" },
+];
+
+/* ─── Category data ──────────────────────────────────────────────────────────── */
+
+const categories = [
+  { icon: <WheelchairIcon />, label: "Manual wheelchairs" },
+  { icon: <ElectricIcon />, label: "Electric wheelchairs" },
+  { icon: <PediatricIcon />, label: "Pediatric mobility" },
+  { icon: <TransportIcon />, label: "Transport chairs" },
+  { icon: <CushionIcon />, label: "Cushions & accessories" },
+  { icon: <SparePartsIcon />, label: "Spare parts" },
+];
+
+/* ═════════════════════════════════════════════════════════════════════════════ */
+/*  Page Component                                                              */
+/* ═════════════════════════════════════════════════════════════════════════════ */
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="flex flex-col min-h-screen bg-offwhite text-navy">
+      {/* ── Top bar ─────────────────────────────────────────────────────────── */}
+      <header className="bg-offwhite text-navy">
+        {/* Utility strip */}
+        <div className="border-b border-navy/5 text-xs">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2">
+            <span className="text-warm-gray">Free delivery on orders above ₹5,000</span>
+            <div className="hidden gap-4 sm:flex">
+              <a href="#" className="text-warm-gray hover:text-orange transition-colors">Track order</a>
+              <a href="#" className="text-warm-gray hover:text-orange transition-colors">Help</a>
+              <a href="#" className="text-warm-gray hover:text-orange transition-colors">Contact</a>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
+
+        {/* Main nav */}
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          {/* Logo — two-line */}
+          <a href="/" className="flex flex-col leading-none">
+            <span className="font-serif text-2xl font-semibold tracking-tight text-navy">
+              PULSE
+            </span>
+            <span className="text-[0.55rem] font-medium uppercase tracking-[0.25em] text-warm-gray">
+              Mobility &amp; Care
+            </span>
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+
+          {/* Nav links */}
+          <ul className="hidden gap-8 text-sm font-medium md:flex">
+            <li><a href="#" className="text-navy hover:text-orange transition-colors">Wheelchairs</a></li>
+            <li><a href="#" className="text-navy hover:text-orange transition-colors">Electric</a></li>
+            <li><a href="#" className="text-navy hover:text-orange transition-colors">Accessories</a></li>
+            <li><a href="#" className="text-navy hover:text-orange transition-colors">About</a></li>
+          </ul>
+
+          {/* Right — icon buttons */}
+          <div className="flex items-center gap-3">
+            {/* Search */}
+            <button
+              type="button"
+              aria-label="Search"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </button>
+
+            {/* Account */}
+            <button
+              type="button"
+              aria-label="Account"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </button>
+
+            {/* Cart */}
+            <button
+              type="button"
+              aria-label="Cart"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <path d="M3 6h18" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      {/* ── Hero banner ─────────────────────────────────────────────────────── */}
+      <section className="relative bg-navy text-white" style={{ aspectRatio: "1800/720" }}>
+        {/* Background gradient overlay (placeholder for a real hero image) */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-light to-navy-dark" />
+
+        {/* Decorative circles */}
+        <div className="absolute right-[10%] top-[15%] h-72 w-72 rounded-full bg-orange/5 blur-3xl" />
+        <div className="absolute right-[25%] bottom-[10%] h-56 w-56 rounded-full bg-orange/5 blur-2xl" />
+
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center justify-between px-6">
+          {/* Left — copy */}
+          <div className="max-w-xl space-y-6 py-16">
+            <p className="text-sm font-semibold uppercase tracking-widest text-orange">
+              Engineered for independence
+            </p>
+            <h1 className="text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-6xl">
+              Move with<br />confidence,<br />every day.
+            </h1>
+            <p className="max-w-md text-base leading-relaxed text-white/80 sm:text-lg">
+              Certified, lightweight, and foldable wheelchairs designed for
+              real-world comfort — at home, outdoors, and on the go.
+            </p>
+            <a
+              href="#"
+              className="inline-block rounded-full bg-orange px-8 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-orange-hover"
+            >
+              Shop wheelchairs
+            </a>
+          </div>
+
+          {/* Right — trust badges */}
+          <div className="hidden flex-col gap-5 lg:flex">
+            {[
+              { icon: <ShieldIcon />, text: "Certified & warrantied" },
+              { icon: <FoldIcon />, text: "Foldable in seconds" },
+              { icon: <FeatherIcon />, text: "Lightweight frame" },
+            ].map((b) => (
+              <div
+                key={b.text}
+                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 backdrop-blur-sm"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-orange/20 text-orange">
+                  {b.icon}
+                </span>
+                <span className="text-sm font-medium">{b.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Category cards (overlap hero by ~60px) ──────────────────────────── */}
+      <section className="-mt-15 relative z-20 mx-auto w-full max-w-6xl px-6">
+        <div className="rounded-2xl bg-white p-8 shadow-xl shadow-navy/5">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
+            {categories.map((c) => (
+              <a
+                key={c.label}
+                href="#"
+                className="group flex flex-col items-center text-center transition-transform hover:-translate-y-1"
+              >
+                <CategoryIcon>{c.icon}</CategoryIcon>
+                <span className="text-sm font-medium text-navy group-hover:text-orange transition-colors">
+                  {c.label}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Best-selling wheelchairs ────────────────────────────────────────── */}
+      <section className="mx-auto mt-20 w-full max-w-7xl px-6">
+        <div className="mb-10 flex items-end justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-widest text-orange">Popular picks</p>
+            <h2 className="mt-1 text-3xl font-bold tracking-tight">Best-selling wheelchairs</h2>
+          </div>
+          <a href="#" className="hidden text-sm font-semibold text-orange hover:underline sm:inline">
+            View all →
           </a>
         </div>
-      </main>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {products.map((p) => (
+            <div
+              key={p.name}
+              className="group flex flex-col rounded-2xl border border-navy/5 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+            >
+              {/* Product image placeholder */}
+              <div className="mb-4 flex aspect-square items-center justify-center rounded-xl bg-offwhite">
+                <WheelchairIcon />
+              </div>
+
+              <h3 className="text-base font-semibold">{p.name}</h3>
+              <p className="mt-1 text-xs text-warm-gray leading-relaxed">{p.spec}</p>
+
+              <div className="mt-auto flex items-center justify-between pt-4">
+                <span className="text-lg font-bold">{p.price}</span>
+                <button
+                  type="button"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-orange text-white transition-colors hover:bg-orange-hover"
+                  aria-label={`Add ${p.name} to cart`}
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="h-4 w-4">
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Promo panels ────────────────────────────────────────────────────── */}
+      <section className="mx-auto mt-20 grid w-full max-w-7xl gap-6 px-6 md:grid-cols-2">
+        {/* Panel 1 — Quiz / Finder */}
+        <div className="flex flex-col justify-between rounded-2xl bg-navy p-10 text-white">
+          <div>
+            <h3 className="text-2xl font-bold leading-snug">
+              Find the right wheelchair<br />for your needs
+            </h3>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/70">
+              Answer a few quick questions and we&apos;ll recommend the best match based on
+              lifestyle, terrain, and medical requirements.
+            </p>
+          </div>
+          <a
+            href="#"
+            className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-orange px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-orange-hover"
+          >
+            Take the quiz
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="h-4 w-4">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        {/* Panel 2 — Care team */}
+        <div className="flex flex-col justify-between rounded-2xl border border-navy/10 bg-white p-10">
+          <div>
+            <h3 className="text-2xl font-bold leading-snug text-navy">
+              Talk to our care team<br />before you order
+            </h3>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-warm-gray">
+              Not sure which model fits best? Our trained mobility specialists will
+              help you choose — free of charge, no pressure.
+            </p>
+          </div>
+          <a
+            href="#"
+            className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border-2 border-navy bg-transparent px-6 py-3 text-sm font-bold uppercase tracking-wide text-navy transition-colors hover:bg-navy hover:text-white"
+          >
+            Schedule a call
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="h-4 w-4">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      {/* ── Trust badges row ────────────────────────────────────────────────── */}
+      <section className="mx-auto mt-20 w-full max-w-7xl px-6">
+        <div className="grid grid-cols-2 gap-6 rounded-2xl bg-white p-8 shadow-sm lg:grid-cols-4">
+          {[
+            { icon: <DeliveryIcon />, title: "Free delivery", desc: "On all orders above ₹5,000" },
+            { icon: <EmiIcon />, title: "Easy EMI", desc: "0% interest available" },
+            { icon: <CertifiedIcon />, title: "ISO certified", desc: "Medical-grade quality" },
+            { icon: <TrialIcon />, title: "7-day trial", desc: "Easy returns, no questions" },
+          ].map((b) => (
+            <div key={b.title} className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-offwhite text-orange">
+                {b.icon}
+              </span>
+              <div>
+                <p className="text-sm font-bold text-navy">{b.title}</p>
+                <p className="mt-0.5 text-xs text-warm-gray">{b.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Footer ──────────────────────────────────────────────────────────── */}
+      <footer className="mt-20 bg-navy text-white">
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <div className="grid gap-12 lg:grid-cols-4">
+            {/* Brand + newsletter */}
+            <div className="lg:col-span-2">
+              <a href="/" className="flex flex-col leading-none">
+                <span className="font-serif text-2xl font-semibold tracking-tight text-white">
+                  PULSE
+                </span>
+                <span className="text-[0.55rem] font-medium uppercase tracking-[0.25em] text-white/50">
+                  Mobility &amp; Care
+                </span>
+              </a>
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
+                Mobility solutions engineered for everyday independence. Certified,
+                lightweight, and foldable — because freedom should never weigh you down.
+              </p>
+
+              {/* Newsletter */}
+              <div className="mt-8">
+                <p className="text-sm font-semibold">Join our newsletter</p>
+                <p className="mt-1 text-xs text-white/50">
+                  Tips, new arrivals, and exclusive deals — straight to your inbox.
+                </p>
+                <form className="mt-4 flex max-w-md gap-2">
+                  <input
+                    type="email"
+                    placeholder="you@example.com"
+                    className="h-11 flex-1 rounded-full border border-white/10 bg-white/5 px-5 text-sm text-white placeholder:text-white/30 focus:border-orange focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="h-11 rounded-full bg-orange px-6 text-sm font-bold text-white transition-colors hover:bg-orange-hover"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            {/* Links col 1 */}
+            <div>
+              <h4 className="text-sm font-bold uppercase tracking-wider text-white/80">Products</h4>
+              <ul className="mt-4 space-y-2.5 text-sm text-white/50">
+                <li><a href="#" className="hover:text-orange transition-colors">Manual wheelchairs</a></li>
+                <li><a href="#" className="hover:text-orange transition-colors">Electric wheelchairs</a></li>
+                <li><a href="#" className="hover:text-orange transition-colors">Pediatric mobility</a></li>
+                <li><a href="#" className="hover:text-orange transition-colors">Transport chairs</a></li>
+                <li><a href="#" className="hover:text-orange transition-colors">Cushions & accessories</a></li>
+                <li><a href="#" className="hover:text-orange transition-colors">Spare parts</a></li>
+              </ul>
+            </div>
+
+            {/* Links col 2 */}
+            <div>
+              <h4 className="text-sm font-bold uppercase tracking-wider text-white/80">Company</h4>
+              <ul className="mt-4 space-y-2.5 text-sm text-white/50">
+                <li><a href="#" className="hover:text-orange transition-colors">About Pulse</a></li>
+                <li><a href="#" className="hover:text-orange transition-colors">Careers</a></li>
+                <li><a href="#" className="hover:text-orange transition-colors">Blog</a></li>
+                <li><a href="#" className="hover:text-orange transition-colors">Contact us</a></li>
+                <li><a href="#" className="hover:text-orange transition-colors">Privacy policy</a></li>
+                <li><a href="#" className="hover:text-orange transition-colors">Terms of service</a></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="mt-12 flex flex-col items-center justify-between border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row">
+            <p>&copy; {new Date().getFullYear()} Pulse Wheelchairs. All rights reserved.</p>
+            <div className="mt-4 flex gap-5 sm:mt-0">
+              <a href="#" className="hover:text-orange transition-colors">Facebook</a>
+              <a href="#" className="hover:text-orange transition-colors">Instagram</a>
+              <a href="#" className="hover:text-orange transition-colors">YouTube</a>
+              <a href="#" className="hover:text-orange transition-colors">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
