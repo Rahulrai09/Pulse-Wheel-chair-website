@@ -18,6 +18,61 @@ function CategoryIcon({ children }: { children: React.ReactNode }) {
 
 /* ─── Small SVG icons ────────────────────────────────────────────────────────── */
 
+function BoltIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+    </svg>
+  );
+}
+
+function WheelIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.636 5.636l4.243 4.243M14.121 14.121l4.243 4.243M5.636 18.364l4.243-4.243M14.121 9.879l4.243-4.243" />
+    </svg>
+  );
+}
+
+function FeatherIconLarge() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
+      <path d="M16 8L2 22" />
+      <path d="M17.5 15H9" />
+    </svg>
+  );
+}
+
+function SuitcaseIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <rect x="3" y="6" width="18" height="14" rx="2" />
+      <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+      <path d="M10 11v4M14 11v4" />
+    </svg>
+  );
+}
+
+function SpeedometerIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <path d="M12 14l3-5" />
+      <path d="M3.34 17a10 10 0 1 1 17.32 0" />
+    </svg>
+  );
+}
+
+function HeartIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </svg>
+  );
+}
+
 function WheelchairIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
@@ -25,52 +80,6 @@ function WheelchairIcon() {
       <circle cx="18" cy="20" r="2.5" />
       <path d="M9 17.5V8h6l3 9.5" />
       <circle cx="9" cy="5" r="2" />
-    </svg>
-  );
-}
-
-function ElectricIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
-      <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
-    </svg>
-  );
-}
-
-function PediatricIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
-      <circle cx="12" cy="6" r="3" />
-      <path d="M9 21V12h6v9" />
-      <path d="M8 12h8" />
-    </svg>
-  );
-}
-
-function TransportIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
-      <rect x="3" y="6" width="18" height="10" rx="2" />
-      <circle cx="8" cy="19" r="2" />
-      <circle cx="16" cy="19" r="2" />
-    </svg>
-  );
-}
-
-function CushionIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
-      <rect x="3" y="8" width="18" height="10" rx="3" />
-      <path d="M3 13h18" />
-    </svg>
-  );
-}
-
-function SparePartsIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
-      <circle cx="12" cy="12" r="3" />
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
     </svg>
   );
 }
@@ -151,12 +160,12 @@ const products = [
 /* ─── Category data ──────────────────────────────────────────────────────────── */
 
 const categories = [
-  { icon: <WheelchairIcon />, label: "Manual wheelchairs" },
-  { icon: <ElectricIcon />, label: "Electric wheelchairs" },
-  { icon: <PediatricIcon />, label: "Pediatric mobility" },
-  { icon: <TransportIcon />, label: "Transport chairs" },
-  { icon: <CushionIcon />, label: "Cushions & accessories" },
-  { icon: <SparePartsIcon />, label: "Spare parts" },
+  { icon: <BoltIcon />, label: "Power Wheelchair" },
+  { icon: <WheelIcon />, label: "Manual Wheelchair" },
+  { icon: <FeatherIconLarge />, label: "Lightweight Wheelchair" },
+  { icon: <SuitcaseIcon />, label: "Travel Wheelchair" },
+  { icon: <SpeedometerIcon />, label: "Speed Wheelchair" },
+  { icon: <HeartIcon />, label: "Comfortable Wheelchair" },
 ];
 
 /* ═════════════════════════════════════════════════════════════════════════════ */
@@ -255,8 +264,8 @@ export default function Home() {
         />
       </section>
 
-      {/* ── Category cards (overlap hero by ~60px) ──────────────────────────── */}
-      <section className="-mt-15 relative z-20 mx-auto w-full max-w-6xl px-6">
+      {/* ── Category cards ─────────────────────────────────────────────────── */}
+      <section className="mt-14 mx-auto w-full max-w-6xl px-6">
         <div className="rounded-2xl bg-white p-8 shadow-xl shadow-navy/5">
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
             {categories.map((c) => (
