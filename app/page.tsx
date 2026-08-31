@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 /* ──────────────────────────────────────────────
    Pulse Wheelchair — Homepage
    Next.js 16 · Tailwind CSS v4 · Server Component
@@ -180,14 +182,16 @@ export default function Home() {
 
         {/* Main nav */}
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          {/* Logo — two-line */}
-          <a href="/" className="flex flex-col leading-none">
-            <span className="font-serif text-2xl font-semibold tracking-tight text-navy">
-              PULSE
-            </span>
-            <span className="text-[0.55rem] font-medium uppercase tracking-[0.25em] text-warm-gray">
-              Mobility &amp; Care
-            </span>
+          {/* Logo — image */}
+          <a href="/" className="flex items-center">
+            <Image
+              src="/pulse-logo.png"
+              alt="Pulse Mobility & Care"
+              width={160}
+              height={40}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </a>
 
           {/* Nav links */}
@@ -241,54 +245,14 @@ export default function Home() {
       </header>
 
       {/* ── Hero banner ─────────────────────────────────────────────────────── */}
-      <section className="relative bg-navy text-white" style={{ aspectRatio: "1800/720" }}>
-        {/* Background gradient overlay (placeholder for a real hero image) */}
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-light to-navy-dark" />
-
-        {/* Decorative circles */}
-        <div className="absolute right-[10%] top-[15%] h-72 w-72 rounded-full bg-orange/5 blur-3xl" />
-        <div className="absolute right-[25%] bottom-[10%] h-56 w-56 rounded-full bg-orange/5 blur-2xl" />
-
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center justify-between px-6">
-          {/* Left — copy */}
-          <div className="max-w-xl space-y-6 py-16">
-            <p className="text-sm font-semibold uppercase tracking-widest text-orange">
-              Engineered for independence
-            </p>
-            <h1 className="text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Move with<br />confidence,<br />every day.
-            </h1>
-            <p className="max-w-md text-base leading-relaxed text-white/80 sm:text-lg">
-              Certified, lightweight, and foldable wheelchairs designed for
-              real-world comfort — at home, outdoors, and on the go.
-            </p>
-            <a
-              href="#"
-              className="inline-block rounded-full bg-orange px-8 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-orange-hover"
-            >
-              Shop wheelchairs
-            </a>
-          </div>
-
-          {/* Right — trust badges */}
-          <div className="hidden flex-col gap-5 lg:flex">
-            {[
-              { icon: <ShieldIcon />, text: "Certified & warrantied" },
-              { icon: <FoldIcon />, text: "Foldable in seconds" },
-              { icon: <FeatherIcon />, text: "Lightweight frame" },
-            ].map((b) => (
-              <div
-                key={b.text}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3.5 backdrop-blur-sm"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-orange/20 text-orange">
-                  {b.icon}
-                </span>
-                <span className="text-sm font-medium">{b.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+      <section className="relative w-full overflow-hidden" style={{ aspectRatio: "1800/720" }}>
+        <Image
+          src="/hero-banner.jpg"
+          alt="Pulse Wheelchair Hero Banner"
+          fill
+          priority
+          className="object-cover"
+        />
       </section>
 
       {/* ── Category cards (overlap hero by ~60px) ──────────────────────────── */}
