@@ -150,11 +150,17 @@ function FeatherIcon() {
 /* ─── Product data ───────────────────────────────────────────────────────────── */
 
 const products = [
-  { name: "Pulse Lite", spec: "Aluminium · 9.8 kg · 100 kg capacity", price: "₹12,499" },
-  { name: "Pulse Flex Pro", spec: "Foldable · 11 kg · 120 kg capacity", price: "₹16,999" },
-  { name: "Pulse E-Motion", spec: "Electric · 24 V · 150 kg capacity", price: "₹42,999" },
-  { name: "Pulse Junior", spec: "Pediatric · 7 kg · 60 kg capacity", price: "₹9,999" },
-  { name: "Pulse Transit", spec: "Transport · 8.5 kg · 110 kg capacity", price: "₹11,499" },
+  { name: "Pulse Foldable Travel Wheelchair", spec: "Ultra-light 9.5kg · 100kg capacity", price: "₹11,999" },
+  { name: "Pulse Prime Electric Wheelchair", spec: "Smart controls · 110kg capacity", price: "₹68,999" },
+  { name: "Pulse Lite Manual Wheelchair", spec: "Aluminium frame · 9.8kg", price: "₹9,499" },
+  { name: "Pulse Power Electric Wheelchair", spec: "Joystick control · 25km range", price: "₹54,999" },
+  { name: "Pulse Comfort Reclining Wheelchair", spec: "Padded recline seat", price: "₹15,499" },
+  { name: "Pulse Speed Electric Wheelchair", spec: "High-speed motor · 115kg capacity", price: "₹72,999" },
+  { name: "Pulse Attendant-propelled Wheelchair", spec: "Caregiver push handles", price: "₹10,499" },
+  { name: "Pulse Self-propelled Wheelchair", spec: "Hand-rim drive wheels", price: "₹10,999" },
+  { name: "Pulse Junior Pediatric Wheelchair", spec: "Adjustable frame, ages 4–12", price: "₹9,999" },
+  { name: "Pulse Transit Transport Wheelchair", spec: "Compact, airline cabin size", price: "₹8,999" },
+  { name: "Pulse Bariatric Wheelchair", spec: "Reinforced heavy-duty frame · 160kg capacity", price: "₹19,999" },
 ];
 
 /* ─── Category data ──────────────────────────────────────────────────────────── */
@@ -284,19 +290,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Best-selling wheelchairs ────────────────────────────────────────── */}
+      {/* ── Best Wheelchairs ────────────────────────────────────────────────── */}
       <section className="mx-auto mt-20 w-full max-w-7xl px-6">
-        <div className="mb-10 flex items-end justify-between">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-orange">Popular picks</p>
-            <h2 className="mt-1 text-3xl font-bold tracking-tight">Best-selling wheelchairs</h2>
-          </div>
-          <a href="#" className="hidden text-sm font-semibold text-orange hover:underline sm:inline">
-            View all →
-          </a>
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold tracking-tight">Best Wheelchairs</h2>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {products.map((p) => (
             <div
               key={p.name}
