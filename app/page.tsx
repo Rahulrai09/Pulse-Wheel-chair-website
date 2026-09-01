@@ -1,5 +1,11 @@
+"use client";
+
 import Image from "next/image";
-import TrustTicker from "./components/TrustTicker";
+import Link from "next/link";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import FeatureIcon from "./components/FeatureIcon";
+import { products } from "@/lib/products";
 
 /* ──────────────────────────────────────────────
    Pulse Wheelchair — Homepage
@@ -74,17 +80,6 @@ function HeartIcon() {
   );
 }
 
-function WheelchairIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">
-      <circle cx="9" cy="20" r="2.5" />
-      <circle cx="18" cy="20" r="2.5" />
-      <path d="M9 17.5V8h6l3 9.5" />
-      <circle cx="9" cy="5" r="2" />
-    </svg>
-  );
-}
-
 function DeliveryIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6">
@@ -100,15 +95,16 @@ function EmiIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6">
       <rect x="2" y="5" width="20" height="14" rx="2" />
-      <path d="M2 10h20" />
+      <line x1="2" y1="10" x2="22" y2="10" />
     </svg>
   );
 }
 
-function CertifiedIcon() {
+function IsoIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6">
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.77 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z" />
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <path d="m9 12 2 2 4-4" />
     </svg>
   );
 }
@@ -116,34 +112,8 @@ function CertifiedIcon() {
 function TrialIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6">
-      <path d="M9 11l3 3L22 4" />
-      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-    </svg>
-  );
-}
-
-function ShieldIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    </svg>
-  );
-}
-
-function FoldIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
-      <path d="M4 19h16M4 5h16M12 5v14M8 9l4-4 4 4M8 15l4 4 4-4" />
-    </svg>
-  );
-}
-
-function FeatherIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-5 w-5">
-      <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
-      <path d="M16 8L2 22" />
-      <path d="M17.5 15H9" />
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <path d="M16 2v4M8 2v4M3 10h18" />
     </svg>
   );
 }
@@ -164,277 +134,31 @@ function ChevronRightIcon() {
   );
 }
 
-function BatteryFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-      <rect x="2" y="7" width="16" height="10" rx="2" />
-      <path d="M22 11v2" />
-      <path d="M6 11v2M10 10v4" />
-    </svg>
-  );
-}
-
-function ShieldFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    </svg>
-  );
-}
-
-function WheelsFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-      <circle cx="12" cy="12" r="9" />
-      <circle cx="12" cy="12" r="3" />
-      <path d="M12 3v6M12 15v6" />
-    </svg>
-  );
-}
-
-function FoldFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-      <path d="M4 19h16M4 5h16M12 5v14M8 9l4-4 4 4M8 15l4 4 4-4" />
-    </svg>
-  );
-}
-
-function FeatherFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-      <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
-      <path d="M16 8L2 22" />
-    </svg>
-  );
-}
-
-function SuitcaseFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-      <rect x="3" y="6" width="18" height="14" rx="2" />
-      <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-    </svg>
-  );
-}
-
-function SpeedFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-      <path d="M12 14l3-5" />
-      <path d="M3.34 17a10 10 0 1 1 17.32 0" />
-    </svg>
-  );
-}
-
-function HeartFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-    </svg>
-  );
-}
-
-function CushionFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-      <rect x="3" y="8" width="18" height="10" rx="3" />
-      <path d="M3 13h18" />
-    </svg>
-  );
-}
-
-function SettingsFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-      <circle cx="12" cy="12" r="3" />
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-    </svg>
-  );
-}
-
-function HandFeatureIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-      <path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8" />
-      <path d="M18 11a2 2 0 0 1 4 0v5a7 7 0 0 1-7 7h-2a7 7 0 0 1-7-7v-3.5" />
-    </svg>
-  );
-}
-
 function PhoneIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-4 w-4">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
     </svg>
   );
 }
 
 function CartIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
-      <circle cx="9" cy="21" r="1" />
-      <circle cx="20" cy="21" r="1" />
-      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-4 w-4">
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+      <path d="M3 6h18" />
+      <path d="M16 10a4 4 0 0 1-8 0" />
     </svg>
   );
 }
 
 function ArrowRightIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="h-5 w-5">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
       <path d="M5 12h14M12 5l7 7-7 7" />
     </svg>
   );
 }
-
-/* ─── Product data ───────────────────────────────────────────────────────────── */
-
-const products = [
-  {
-    name: "Pulse Comfort Electric Wheelchair",
-    description:
-      "Model 6016A electric wheelchair with innovative design for enhanced comfort.",
-    image: "/products/innovax-01.webp",
-    price: "₹58,999",
-    features: [
-      { icon: <SettingsFeatureIcon />, label: "360° Joystick" },
-      { icon: <ShieldFeatureIcon />, label: "Shock Absorb" },
-      { icon: <FoldFeatureIcon />, label: "Foldable Frame" },
-      { icon: <HeartFeatureIcon />, label: "Extra Comfort" },
-    ],
-  },
-  {
-    name: "Pulse Foldable Travel Wheelchair",
-    description:
-      "Ultra-lightweight electric wheelchair, foldable frame, extended battery.",
-    image: "/products/joylite-1-01.webp",
-    price: "₹68,999",
-    features: [
-      { icon: <FeatherFeatureIcon />, label: "21kg Light" },
-      { icon: <FoldFeatureIcon />, label: "Foldable" },
-      { icon: <BatteryFeatureIcon />, label: "Long Battery" },
-      { icon: <WheelsFeatureIcon />, label: "Dual Motors" },
-    ],
-  },
-  {
-    name: "Pulse Prime Electric Wheelchair",
-    description:
-      "Upgraded battery capacity, improved seat comfort, intuitive joystick.",
-    image: "/products/joylite-2-01.webp",
-    price: "₹55,999",
-    features: [
-      { icon: <BatteryFeatureIcon />, label: "Plus Battery" },
-      { icon: <CushionFeatureIcon />, label: "Plush Seat" },
-      { icon: <SettingsFeatureIcon />, label: "Smart Control" },
-      { icon: <ShieldFeatureIcon />, label: "Safe Brakes" },
-    ],
-  },
-  {
-    name: "Pulse Power Electric Wheelchair",
-    description:
-      "Lightweight aluminium frame, dual motors, smart joystick.",
-    image: "/products/aerodrive-1-01.webp",
-    price: "₹61,999",
-    features: [
-      { icon: <FeatherFeatureIcon />, label: "Alloy Frame" },
-      { icon: <WheelsFeatureIcon />, label: "Dual 250W" },
-      { icon: <SettingsFeatureIcon />, label: "Smart Control" },
-      { icon: <ShieldFeatureIcon />, label: "Electro Brake" },
-    ],
-  },
-  {
-    name: "Pulse Endurance Electric Wheelchair",
-    description:
-      "36kg lightweight build, 24V 10Ah battery, 15-20km range.",
-    image: "/products/aerodrive-2-01.webp",
-    price: "₹64,999",
-    features: [
-      { icon: <FeatherFeatureIcon />, label: "36kg Light" },
-      { icon: <BatteryFeatureIcon />, label: "24V 10Ah" },
-      { icon: <SpeedFeatureIcon />, label: "15-20km Range" },
-      { icon: <FoldFeatureIcon />, label: "Foldable" },
-    ],
-  },
-  {
-    name: "Pulse Comfort Reclining Wheelchair",
-    description:
-      "Electric recline to 160°, one-hand 360° joystick control.",
-    image: "/products/cruza-01.webp",
-    price: "₹74,999",
-    features: [
-      { icon: <SettingsFeatureIcon />, label: "160° Recline" },
-      { icon: <HandFeatureIcon />, label: "One Hand 360°" },
-      { icon: <ShieldFeatureIcon />, label: "Heavy Iron" },
-      { icon: <CushionFeatureIcon />, label: "Rest Support" },
-    ],
-  },
-  {
-    name: "Pulse Rugged All-Terrain Wheelchair",
-    description:
-      "Heavy-duty electric wheelchair for all-terrain mobility.",
-    image: "/products/xtrion-01.webp",
-    price: "₹57,999",
-    features: [
-      { icon: <ShieldFeatureIcon />, label: "Heavy Duty" },
-      { icon: <WheelsFeatureIcon />, label: "All Terrain" },
-      { icon: <SpeedFeatureIcon />, label: "High Torque" },
-      { icon: <BatteryFeatureIcon />, label: "Long Range" },
-    ],
-  },
-  {
-    name: "Pulse Long-Range Electric Wheelchair",
-    description:
-      "Heavy-duty foldable, long-range battery, all-terrain control.",
-    image: "/products/motion-pro-1-01.webp",
-    price: "₹59,999",
-    features: [
-      { icon: <FoldFeatureIcon />, label: "Heavy Fold" },
-      { icon: <BatteryFeatureIcon />, label: "Long Range" },
-      { icon: <WheelsFeatureIcon />, label: "All Terrain" },
-      { icon: <ShieldFeatureIcon />, label: "Rugged Build" },
-    ],
-  },
-  {
-    name: "Pulse Heavy-Duty Foldable Wheelchair",
-    description:
-      "24V 20Ah battery, 15-20km range, 24-inch alloy rear wheel.",
-    image: "/products/motion-pro-2-01.webp",
-    price: "₹56,999",
-    features: [
-      { icon: <BatteryFeatureIcon />, label: "24V 20Ah" },
-      { icon: <WheelsFeatureIcon />, label: "24\" Rear Wheel" },
-      { icon: <SpeedFeatureIcon />, label: "15-20km Range" },
-      { icon: <ShieldFeatureIcon />, label: "Alloy Drive" },
-    ],
-  },
-  {
-    name: "Pulse Compact Autofold Wheelchair",
-    description:
-      "26kg carbon fiber, autofold, 24V 10Ah battery, 15-20km range.",
-    image: "/products/smartride-1-01.webp",
-    price: "₹62,999",
-    features: [
-      { icon: <FeatherFeatureIcon />, label: "Carbon Fiber" },
-      { icon: <FoldFeatureIcon />, label: "Autofold" },
-      { icon: <BatteryFeatureIcon />, label: "24V 10Ah" },
-      { icon: <SpeedFeatureIcon />, label: "15-20km Range" },
-    ],
-  },
-  {
-    name: "Pulse Travel-Ready Foldable Wheelchair",
-    description:
-      "One-touch fold mechanism, travel-friendly compact design.",
-    image: "/products/smartride-2-01.webp",
-    price: "₹82,999",
-    features: [
-      { icon: <FoldFeatureIcon />, label: "One-Touch" },
-      { icon: <SuitcaseFeatureIcon />, label: "Compact Travel" },
-      { icon: <FeatherFeatureIcon />, label: "Lightweight" },
-      { icon: <SettingsFeatureIcon />, label: "Smart Control" },
-    ],
-  },
-];
 
 /* ─── Category data ──────────────────────────────────────────────────────────── */
 
@@ -447,6 +171,15 @@ const categories = [
   { icon: <HeartIcon />, label: "Comfortable Wheelchair" },
 ];
 
+/* ─── Trust Badges data ──────────────────────────────────────────────────────── */
+
+const trustBadges = [
+  { icon: <DeliveryIcon />, title: "Free Delivery", desc: "Across 18,000+ pin codes in India" },
+  { icon: <EmiIcon />, title: "Easy EMI Options", desc: "Starting at ₹999/mo — zero cost" },
+  { icon: <IsoIcon />, title: "ISO 13485 Certified", desc: "Medical-grade quality assurance" },
+  { icon: <TrialIcon />, title: "7-Day Home Trial", desc: "Love it or return with full refund" },
+];
+
 /* ═════════════════════════════════════════════════════════════════════════════ */
 /*  Page Component                                                              */
 /* ═════════════════════════════════════════════════════════════════════════════ */
@@ -454,74 +187,8 @@ const categories = [
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-offwhite text-navy">
-      {/* ── Top bar ─────────────────────────────────────────────────────────── */}
-      <header className="bg-offwhite text-navy">
-        {/* Utility strip */}
-        <TrustTicker />
-
-        {/* Main nav */}
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          {/* Logo — image */}
-          <a href="/" className="flex items-center">
-            <Image
-              src="/pulse-logo.png"
-              alt="Pulse Mobility & Care"
-              width={160}
-              height={40}
-              className="h-10 w-auto object-contain"
-              priority
-            />
-          </a>
-
-          {/* Nav links */}
-          <ul className="hidden gap-8 text-sm font-medium md:flex">
-            <li><a href="#" className="text-navy hover:text-orange transition-colors">Wheelchairs</a></li>
-            <li><a href="#" className="text-navy hover:text-orange transition-colors">Electric</a></li>
-            <li><a href="#" className="text-navy hover:text-orange transition-colors">Accessories</a></li>
-            <li><a href="#" className="text-navy hover:text-orange transition-colors">About</a></li>
-          </ul>
-
-          {/* Right — icon buttons */}
-          <div className="flex items-center gap-3">
-            {/* Search */}
-            <button
-              type="button"
-              aria-label="Search"
-              className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
-              </svg>
-            </button>
-
-            {/* Account */}
-            <button
-              type="button"
-              aria-label="Account"
-              className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </button>
-
-            {/* Cart */}
-            <button
-              type="button"
-              aria-label="Cart"
-              className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-                <path d="M3 6h18" />
-                <path d="M16 10a4 4 0 0 1-8 0" />
-              </svg>
-            </button>
-          </div>
-        </nav>
-      </header>
+      {/* Header */}
+      <Header />
 
       {/* ── Hero banner ─────────────────────────────────────────────────────── */}
       <section className="relative w-full overflow-hidden" style={{ aspectRatio: "1800/720" }}>
@@ -562,8 +229,9 @@ export default function Home() {
 
         <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           {products.map((p) => (
-            <div
-              key={p.name}
+            <Link
+              key={p.slug}
+              href={`/wheelchairs/${p.slug}`}
               className="group flex flex-col overflow-hidden rounded-[26px] bg-[#EEF4F8]/80 p-2.5 shadow-sm transition-shadow hover:shadow-md border border-slate-200/60"
             >
               {/* Top Image area with soft gradient */}
@@ -572,6 +240,10 @@ export default function Home() {
                 <button
                   type="button"
                   aria-label="Previous image"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
                   className="absolute left-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5 z-20"
                 >
                   <ChevronLeftIcon />
@@ -590,6 +262,10 @@ export default function Home() {
                 <button
                   type="button"
                   aria-label="Next image"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
                   className="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5 z-20"
                 >
                   <ChevronRightIcon />
@@ -607,7 +283,7 @@ export default function Home() {
 
                 {/* Title & Description */}
                 <div>
-                  <h3 className="font-serif text-lg sm:text-xl font-semibold leading-tight text-navy mb-2">
+                  <h3 className="font-serif text-lg sm:text-xl font-semibold leading-tight text-navy mb-2 group-hover:text-orange transition-colors">
                     {p.name}
                   </h3>
                   <p className="text-xs sm:text-[13px] text-zinc-500 leading-relaxed mb-4">
@@ -619,7 +295,7 @@ export default function Home() {
                     {p.features.map((f, idx) => (
                       <div key={idx} className="flex flex-col items-center">
                         <div className="mb-1 flex h-7.5 w-7.5 items-center justify-center rounded-full bg-orange/10 text-orange [&>svg]:h-3.5 [&>svg]:w-3.5">
-                          {f.icon}
+                          <FeatureIcon iconKey={f.iconKey} />
                         </div>
                         <span className="text-[9px] sm:text-[9.5px] font-medium leading-tight text-zinc-600 text-center break-words min-h-[1.75rem] flex items-center justify-center">
                           {f.label}
@@ -639,6 +315,10 @@ export default function Home() {
                       <button
                         type="button"
                         aria-label="Call specialist"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }}
                         className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
                       >
                         <PhoneIcon />
@@ -646,6 +326,10 @@ export default function Home() {
                       <button
                         type="button"
                         aria-label="Add to cart"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }}
                         className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
                       >
                         <CartIcon />
@@ -656,6 +340,10 @@ export default function Home() {
                   {/* Buy Now Button */}
                   <button
                     type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
                     className="flex w-full items-center justify-center gap-2 rounded-full bg-orange py-2.5 px-4 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover [&>svg]:h-4 [&>svg]:w-4"
                   >
                     <span>Buy Now</span>
@@ -663,69 +351,78 @@ export default function Home() {
                   </button>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* ── Promo panels ────────────────────────────────────────────────────── */}
-      <section className="mx-auto mt-20 grid w-full max-w-7xl gap-6 px-6 md:grid-cols-2">
-        {/* Panel 1 — Quiz / Finder */}
-        <div className="flex flex-col justify-between rounded-2xl bg-navy p-10 text-white">
-          <div>
-            <h3 className="text-2xl font-bold leading-snug">
-              Find the right wheelchair<br />for your needs
-            </h3>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/70">
-              Answer a few quick questions and we&apos;ll recommend the best match based on
-              lifestyle, terrain, and medical requirements.
-            </p>
+      {/* ── Promo Panels (Why Choose Pulse & Range Highlights) ──────────────── */}
+      <section className="mx-auto mt-20 w-full max-w-7xl px-6">
+        <div className="grid gap-8 lg:grid-cols-2">
+          {/* Panel 1 */}
+          <div className="flex flex-col justify-between rounded-3xl bg-navy p-8 text-white shadow-xl">
+            <div>
+              <span className="text-xs font-semibold tracking-wider text-orange uppercase">
+                WHY PULSE
+              </span>
+              <h3 className="mt-2 font-serif text-2xl font-bold sm:text-3xl">
+                Engineered for Mobility, Crafted for Comfort
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-white/70">
+                Every Pulse wheelchair undergoes rigorous testing to guarantee lightweight strength, smooth terrain navigation, and all-day ergonomic support for complete peace of mind.
+              </p>
+            </div>
+            <div className="mt-8 flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange text-white">
+                <IsoIcon />
+              </div>
+              <div>
+                <p className="text-sm font-bold">Medical-Grade Quality</p>
+                <p className="text-xs text-white/60">ISO 13485 &amp; CE Certified manufacturing</p>
+              </div>
+            </div>
           </div>
-          <a
-            href="#"
-            className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-orange px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-orange-hover"
-          >
-            Take the quiz
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="h-4 w-4">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
 
-        {/* Panel 2 — Care team */}
-        <div className="flex flex-col justify-between rounded-2xl border border-navy/10 bg-white p-10">
-          <div>
-            <h3 className="text-2xl font-bold leading-snug text-navy">
-              Talk to our care team<br />before you order
-            </h3>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-warm-gray">
-              Not sure which model fits best? Our trained mobility specialists will
-              help you choose — free of charge, no pressure.
-            </p>
+          {/* Panel 2 */}
+          <div className="flex flex-col justify-between rounded-3xl bg-white p-8 text-navy shadow-xl shadow-navy/5 border border-navy/5">
+            <div>
+              <span className="text-xs font-semibold tracking-wider text-orange uppercase">
+                SERVICE &amp; SUPPORT
+              </span>
+              <h3 className="mt-2 font-serif text-2xl font-bold sm:text-3xl">
+                Hassle-Free Ownership Experience
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-warm-gray">
+                From doorstep delivery to 1-year comprehensive warranty and dedicated home service across India, Pulse ensures your independence is backed every step of the way.
+              </p>
+            </div>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#"
+                className="rounded-full bg-orange px-6 py-3 text-xs font-bold text-white transition-colors hover:bg-orange-hover"
+              >
+                Schedule Demo
+              </a>
+              <a
+                href="#"
+                className="rounded-full border border-navy/20 px-6 py-3 text-xs font-bold text-navy transition-colors hover:bg-navy/5"
+              >
+                Download Catalog
+              </a>
+            </div>
           </div>
-          <a
-            href="#"
-            className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border-2 border-navy bg-transparent px-6 py-3 text-sm font-bold uppercase tracking-wide text-navy transition-colors hover:bg-navy hover:text-white"
-          >
-            Schedule a call
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="h-4 w-4">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-            </svg>
-          </a>
         </div>
       </section>
 
-      {/* ── Trust badges row ────────────────────────────────────────────────── */}
+      {/* ── Trust Badges Strip ───────────────────────────────────────────────── */}
       <section className="mx-auto mt-20 w-full max-w-7xl px-6">
-        <div className="grid grid-cols-2 gap-6 rounded-2xl bg-white p-8 shadow-sm lg:grid-cols-4">
-          {[
-            { icon: <DeliveryIcon />, title: "Free delivery", desc: "On all orders above ₹5,000" },
-            { icon: <EmiIcon />, title: "Easy EMI", desc: "0% interest available" },
-            { icon: <CertifiedIcon />, title: "ISO certified", desc: "Medical-grade quality" },
-            { icon: <TrialIcon />, title: "7-day trial", desc: "Easy returns, no questions" },
-          ].map((b) => (
-            <div key={b.title} className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-offwhite text-orange">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {trustBadges.map((b) => (
+            <div
+              key={b.title}
+              className="flex items-center gap-4 rounded-2xl bg-white p-6 shadow-md shadow-navy/5 transition-transform hover:-translate-y-0.5"
+            >
+              <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-orange/10 text-orange">
                 {b.icon}
               </span>
               <div>
@@ -737,86 +434,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Footer ──────────────────────────────────────────────────────────── */}
-      <footer className="mt-12 bg-navy text-white">
-        <div className="mx-auto max-w-7xl px-6 py-10">
-          <div className="grid gap-8 lg:grid-cols-4">
-            {/* Brand + newsletter */}
-            <div className="lg:col-span-2">
-              <a href="/" className="flex flex-col items-start leading-none gap-1">
-                <Image
-                  src="/pulse-logo-white.png"
-                  alt="Pulse Mobility & Care"
-                  width={160}
-                  height={40}
-                  className="h-10 w-auto object-contain"
-                />
-                <span className="text-[0.55rem] font-medium uppercase tracking-[0.25em] text-white/50">
-                  Mobility &amp; Care
-                </span>
-              </a>
-              <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/60">
-                Mobility solutions engineered for everyday independence. Certified,
-                lightweight, and foldable — because freedom should never weigh you down.
-              </p>
-
-              {/* Newsletter */}
-              <div className="mt-5">
-                <p className="text-sm font-semibold">Join our newsletter</p>
-                <p className="mt-0.5 text-xs text-white/50">
-                  Tips, new arrivals, and exclusive deals — straight to your inbox.
-                </p>
-                <form className="mt-3 flex max-w-md gap-2">
-                  <input
-                    type="email"
-                    placeholder="you@example.com"
-                    className="h-10 flex-1 rounded-full border border-white/10 bg-white/5 px-4 text-sm text-white placeholder:text-white/30 focus:border-orange focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    className="h-10 rounded-full bg-orange px-5 text-sm font-bold text-white transition-colors hover:bg-orange-hover"
-                  >
-                    Subscribe
-                  </button>
-                </form>
-              </div>
-            </div>
-
-            {/* Links col 1: Company */}
-            <div>
-              <h4 className="text-sm font-bold uppercase tracking-wider text-white/80">Company</h4>
-              <ul className="mt-3 space-y-2 text-sm text-white/50">
-                <li><a href="#" className="hover:text-orange transition-colors">About us</a></li>
-                <li><a href="#" className="hover:text-orange transition-colors">Warranty policy</a></li>
-                <li><a href="#" className="hover:text-orange transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-orange transition-colors">Contact</a></li>
-              </ul>
-            </div>
-
-            {/* Links col 2: Support */}
-            <div>
-              <h4 className="text-sm font-bold uppercase tracking-wider text-white/80">Support</h4>
-              <ul className="mt-3 space-y-2 text-sm text-white/50">
-                <li><a href="#" className="hover:text-orange transition-colors">Track your order</a></li>
-                <li><a href="#" className="hover:text-orange transition-colors">Returns &amp; service</a></li>
-                <li><a href="#" className="hover:text-orange transition-colors">Size &amp; fit guide</a></li>
-                <li><a href="#" className="hover:text-orange transition-colors">FAQs</a></li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom bar */}
-          <div className="mt-8 flex flex-col items-center justify-between border-t border-white/10 pt-5 text-xs text-white/40 sm:flex-row">
-            <p>&copy; {new Date().getFullYear()} Pulse Wheelchairs. All rights reserved.</p>
-            <div className="mt-3 flex gap-5 sm:mt-0">
-              <a href="#" className="hover:text-orange transition-colors">Facebook</a>
-              <a href="#" className="hover:text-orange transition-colors">Instagram</a>
-              <a href="#" className="hover:text-orange transition-colors">YouTube</a>
-              <a href="#" className="hover:text-orange transition-colors">LinkedIn</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
