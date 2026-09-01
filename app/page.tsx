@@ -567,12 +567,12 @@ export default function Home() {
               className="group flex flex-col overflow-hidden rounded-[26px] bg-[#EEF4F8]/80 p-2.5 shadow-sm transition-shadow hover:shadow-md border border-slate-200/60"
             >
               {/* Top Image area with soft gradient */}
-              <div className="relative h-48 sm:h-52 w-full rounded-[20px] bg-gradient-to-b from-[#E2EDF7] via-[#EEF5FC] to-[#F8FBFE] flex items-center justify-center p-4 overflow-hidden">
+              <div className="relative z-10 h-52 sm:h-56 w-full rounded-[20px] bg-gradient-to-b from-[#E2EDF7] via-[#EEF5FC] to-[#F8FBFE] flex items-center justify-center p-3 pb-6">
                 {/* Chevron buttons */}
                 <button
                   type="button"
                   aria-label="Previous image"
-                  className="absolute left-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5"
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5 z-20"
                 >
                   <ChevronLeftIcon />
                 </button>
@@ -583,21 +583,21 @@ export default function Home() {
                     alt={p.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-contain p-1.5 transition-transform duration-300 group-hover:scale-105"
+                    className="object-contain p-1 scale-105 transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
 
                 <button
                   type="button"
                   aria-label="Next image"
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5 z-20"
                 >
                   <ChevronRightIcon />
                 </button>
               </div>
 
               {/* White rounded panel overlapping the top image */}
-              <div className="relative z-10 -mt-8 flex flex-1 flex-col justify-between rounded-[22px] bg-white p-4 sm:p-5 shadow-sm">
+              <div className="relative z-20 -mt-8 flex flex-1 flex-col justify-between rounded-[22px] bg-white p-4 sm:p-5 shadow-sm">
                 {/* Pagination Dots */}
                 <div className="mb-3 flex items-center justify-center gap-1.5">
                   <span className="h-1.5 w-5 rounded-full bg-orange" />
@@ -607,10 +607,10 @@ export default function Home() {
 
                 {/* Title & Description */}
                 <div>
-                  <h3 className="font-serif text-base sm:text-lg font-bold leading-tight text-navy mb-1.5 min-h-[2.75rem] flex items-start">
+                  <h3 className="font-serif text-lg sm:text-xl font-semibold leading-tight text-navy mb-2">
                     {p.name}
                   </h3>
-                  <p className="text-xs text-zinc-500 leading-relaxed mb-4 line-clamp-2 min-h-[2.25rem]">
+                  <p className="text-xs sm:text-[13px] text-zinc-500 leading-relaxed mb-4">
                     {p.description}
                   </p>
 
