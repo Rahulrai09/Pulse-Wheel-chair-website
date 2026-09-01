@@ -20,7 +20,7 @@ export default function Footer() {
                 Mobility &amp; Care
               </span>
             </Link>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/60">
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/90">
               Mobility solutions engineered for everyday independence. Certified,
               lightweight, and foldable — because freedom should never weigh you down.
             </p>
@@ -28,7 +28,7 @@ export default function Footer() {
             {/* Newsletter */}
             <div className="mt-5">
               <p className="text-sm font-semibold">Join our newsletter</p>
-              <p className="mt-0.5 text-xs text-white/50">
+              <p className="mt-0.5 text-xs text-white/90">
                 Tips, new arrivals, and exclusive deals — straight to your inbox.
               </p>
               <form className="mt-3 flex max-w-md gap-2">
@@ -50,7 +50,7 @@ export default function Footer() {
           {/* Links col 1: Company */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-white/80">Company</h4>
-            <ul className="mt-3 space-y-2 text-sm text-white/50">
+            <ul className="mt-3 space-y-2 text-sm text-white/90">
               <li><a href="#" className="hover:text-orange transition-colors">About us</a></li>
               <li><a href="#" className="hover:text-orange transition-colors">Warranty policy</a></li>
               <li><a href="#" className="hover:text-orange transition-colors">Careers</a></li>
@@ -61,7 +61,7 @@ export default function Footer() {
           {/* Links col 2: Support */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-white/80">Support</h4>
-            <ul className="mt-3 space-y-2 text-sm text-white/50">
+            <ul className="mt-3 space-y-2 text-sm text-white/90">
               <li><a href="#" className="hover:text-orange transition-colors">Track your order</a></li>
               <li><a href="#" className="hover:text-orange transition-colors">Returns &amp; service</a></li>
               <li><a href="#" className="hover:text-orange transition-colors">Size &amp; fit guide</a></li>
@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 flex flex-col items-center justify-between border-t border-white/10 pt-5 text-xs text-white/40 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between border-t border-white/10 pt-5 text-xs text-white/90 sm:flex-row">
           <p>&copy; {new Date().getFullYear()} Pulse Wheelchairs. All rights reserved.</p>
           <div className="mt-3 flex gap-5 sm:mt-0">
             <a href="#" className="hover:text-orange transition-colors">Facebook</a>
