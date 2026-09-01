@@ -292,7 +292,7 @@ function ArrowRightIcon() {
 
 const products = [
   {
-    name: "Pulse Innovax",
+    name: "Pulse Comfort Electric Wheelchair",
     description:
       "Model 6016A electric wheelchair with innovative design for enhanced comfort.",
     image: "/products/innovax-01.webp",
@@ -305,7 +305,7 @@ const products = [
     ],
   },
   {
-    name: "Pulse Joylite 1",
+    name: "Pulse Foldable Travel Wheelchair",
     description:
       "Ultra-lightweight electric wheelchair, foldable frame, extended battery.",
     image: "/products/joylite-1-01.webp",
@@ -318,7 +318,7 @@ const products = [
     ],
   },
   {
-    name: "Pulse Joylite 2",
+    name: "Pulse Prime Electric Wheelchair",
     description:
       "Upgraded battery capacity, improved seat comfort, intuitive joystick.",
     image: "/products/joylite-2-01.webp",
@@ -331,7 +331,7 @@ const products = [
     ],
   },
   {
-    name: "Pulse Aerodrive 1",
+    name: "Pulse Power Electric Wheelchair",
     description:
       "Lightweight aluminium frame, dual motors, smart joystick.",
     image: "/products/aerodrive-1-01.webp",
@@ -344,7 +344,7 @@ const products = [
     ],
   },
   {
-    name: "Pulse Aerodrive 2",
+    name: "Pulse Endurance Electric Wheelchair",
     description:
       "36kg lightweight build, 24V 10Ah battery, 15-20km range.",
     image: "/products/aerodrive-2-01.webp",
@@ -357,7 +357,7 @@ const products = [
     ],
   },
   {
-    name: "Pulse Cruza",
+    name: "Pulse Comfort Reclining Wheelchair",
     description:
       "Electric recline to 160°, one-hand 360° joystick control.",
     image: "/products/cruza-01.webp",
@@ -370,7 +370,7 @@ const products = [
     ],
   },
   {
-    name: "Pulse Xtrion",
+    name: "Pulse Rugged All-Terrain Wheelchair",
     description:
       "Heavy-duty electric wheelchair for all-terrain mobility.",
     image: "/products/xtrion-01.webp",
@@ -383,7 +383,7 @@ const products = [
     ],
   },
   {
-    name: "Pulse Motion Pro 1",
+    name: "Pulse Long-Range Electric Wheelchair",
     description:
       "Heavy-duty foldable, long-range battery, all-terrain control.",
     image: "/products/motion-pro-1-01.webp",
@@ -396,7 +396,7 @@ const products = [
     ],
   },
   {
-    name: "Pulse Motion Pro 2",
+    name: "Pulse Heavy-Duty Foldable Wheelchair",
     description:
       "24V 20Ah battery, 15-20km range, 24-inch alloy rear wheel.",
     image: "/products/motion-pro-2-01.webp",
@@ -409,7 +409,7 @@ const products = [
     ],
   },
   {
-    name: "Pulse Smartride 1",
+    name: "Pulse Compact Autofold Wheelchair",
     description:
       "26kg carbon fiber, autofold, 24V 10Ah battery, 15-20km range.",
     image: "/products/smartride-1-01.webp",
@@ -422,7 +422,7 @@ const products = [
     ],
   },
   {
-    name: "Pulse Smartride 2",
+    name: "Pulse Travel-Ready Foldable Wheelchair",
     description:
       "One-touch fold mechanism, travel-friendly compact design.",
     image: "/products/smartride-2-01.webp",
