@@ -549,62 +549,62 @@ export default function Home() {
           <h2 className="text-3xl font-bold tracking-tight">Best Wheelchairs</h2>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           {products.map((p) => (
             <div
               key={p.name}
-              className="group flex flex-col overflow-hidden rounded-[32px] bg-[#EEF4F8]/80 p-2.5 sm:p-3 shadow-sm transition-shadow hover:shadow-lg border border-slate-200/60"
+              className="group flex flex-col overflow-hidden rounded-[24px] bg-[#EEF4F8]/80 p-2 shadow-sm transition-shadow hover:shadow-md border border-slate-200/60"
             >
               {/* Top Image area with soft gradient */}
-              <div className="relative h-64 sm:h-72 w-full rounded-[24px] bg-gradient-to-b from-[#E2EDF7] via-[#EEF5FC] to-[#F8FBFE] flex items-center justify-center p-6 overflow-hidden">
+              <div className="relative h-40 w-full rounded-[18px] bg-gradient-to-b from-[#E2EDF7] via-[#EEF5FC] to-[#F8FBFE] flex items-center justify-center p-3 overflow-hidden">
                 {/* Chevron buttons */}
                 <button
                   type="button"
                   aria-label="Previous image"
-                  className="absolute left-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-zinc-700 shadow-md transition-transform hover:scale-105 active:scale-95"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3 [&>svg]:w-3"
                 >
                   <ChevronLeftIcon />
                 </button>
 
-                <div className="flex h-full w-full items-center justify-center text-navy/70">
+                <div className="flex h-full w-full items-center justify-center text-navy/70 [&>svg]:h-14 [&>svg]:w-14">
                   <WheelchairIcon />
                 </div>
 
                 <button
                   type="button"
                   aria-label="Next image"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-zinc-700 shadow-md transition-transform hover:scale-105 active:scale-95"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3 [&>svg]:w-3"
                 >
                   <ChevronRightIcon />
                 </button>
               </div>
 
               {/* White rounded panel overlapping the top image */}
-              <div className="relative z-10 -mt-10 sm:-mt-12 flex flex-1 flex-col justify-between rounded-[26px] bg-white p-5 sm:p-6 shadow-sm">
+              <div className="relative z-10 -mt-6 flex flex-1 flex-col justify-between rounded-[20px] bg-white p-3.5 shadow-sm">
                 {/* Pagination Dots */}
-                <div className="mb-4 flex items-center justify-center gap-1.5">
-                  <span className="h-1.5 w-6 rounded-full bg-orange" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-orange/20" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-orange/20" />
+                <div className="mb-2.5 flex items-center justify-center gap-1">
+                  <span className="h-1 w-4 rounded-full bg-orange" />
+                  <span className="h-1 w-1 rounded-full bg-orange/20" />
+                  <span className="h-1 w-1 rounded-full bg-orange/20" />
                 </div>
 
                 {/* Title & Description */}
                 <div>
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold leading-tight text-navy mb-2 min-h-[3.25rem] flex items-center">
+                  <h3 className="font-serif text-sm font-bold leading-tight text-navy mb-1 line-clamp-2 min-h-[2.5rem] flex items-start">
                     {p.name}
                   </h3>
-                  <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed mb-6 line-clamp-3">
+                  <p className="text-[11px] text-zinc-500 leading-snug mb-3 line-clamp-2 min-h-[1.75rem]">
                     {p.description}
                   </p>
 
                   {/* 4 Feature Icons Row */}
-                  <div className="mb-6 grid grid-cols-4 gap-2 text-center">
+                  <div className="mb-3.5 grid grid-cols-4 gap-1 text-center">
                     {p.features.map((f, idx) => (
                       <div key={idx} className="flex flex-col items-center">
-                        <div className="mb-1.5 flex h-11 w-11 items-center justify-center rounded-full bg-orange/10 text-orange">
+                        <div className="mb-1 flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange [&>svg]:h-4 [&>svg]:w-4">
                           {f.icon}
                         </div>
-                        <span className="text-[10px] sm:text-[11px] font-medium leading-tight text-zinc-600">
+                        <span className="text-[9px] font-medium leading-tight text-zinc-600 line-clamp-1">
                           {f.label}
                         </span>
                       </div>
@@ -614,22 +614,22 @@ export default function Home() {
 
                 {/* Price & Actions Row */}
                 <div>
-                  <div className="mb-5 flex items-center justify-between">
-                    <span className="font-sans text-2xl sm:text-3xl font-extrabold text-navy">
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="font-sans text-lg font-extrabold text-navy">
                       {p.price}
                     </span>
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center gap-1.5">
                       <button
                         type="button"
                         aria-label="Call specialist"
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20"
+                        className="flex h-7 w-7 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-3.5 [&>svg]:w-3.5"
                       >
                         <PhoneIcon />
                       </button>
                       <button
                         type="button"
                         aria-label="Add to cart"
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20"
+                        className="flex h-7 w-7 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-3.5 [&>svg]:w-3.5"
                       >
                         <CartIcon />
                       </button>
@@ -639,7 +639,7 @@ export default function Home() {
                   {/* Buy Now Button */}
                   <button
                     type="button"
-                    className="flex w-full items-center justify-center gap-2 rounded-full bg-orange py-3.5 px-6 text-sm sm:text-base font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover"
+                    className="flex w-full items-center justify-center gap-1.5 rounded-full bg-orange py-2 px-3 text-xs font-bold text-white shadow-sm shadow-orange/20 transition-colors hover:bg-orange-hover [&>svg]:h-3.5 [&>svg]:w-3.5"
                   >
                     <span>Buy Now</span>
                     <ArrowRightIcon />
