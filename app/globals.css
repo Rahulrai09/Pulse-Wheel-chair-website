@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F3F1EC;
+  --background: #F1F2F4;
   --foreground: #1B355E;
 }
 
@@ -13,7 +13,7 @@
   --color-navy-dark: #142847;
   --color-orange: #EE8B1B;
   --color-orange-hover: #d97b15;
-  --color-offwhite: #F3F1EC;
+  --color-offwhite: #F1F2F4;
   --color-warm-gray: #6B7280;
   --font-sans: var(--font-inter);
   --font-serif: var(--font-fraunces);
