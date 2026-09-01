@@ -295,7 +295,7 @@ const products = [
     name: "Pulse Foldable Travel Wheelchair",
     description:
       "Engineered for effortless portability and daily convenience. Folds in seconds for seamless car boot storage and airplane travel.",
-    price: "₹11,999",
+    price: "₹58,999",
     features: [
       { icon: <FeatherFeatureIcon />, label: "Ultra Light" },
       { icon: <FoldFeatureIcon />, label: "Foldable" },
@@ -319,7 +319,7 @@ const products = [
     name: "Pulse Lite Manual Wheelchair",
     description:
       "Ultra-lightweight aluminum construction providing smooth maneuverability, easy folding, and dependable daily strength.",
-    price: "₹9,499",
+    price: "₹55,999",
     features: [
       { icon: <FeatherFeatureIcon />, label: "9.8kg Light" },
       { icon: <ShieldFeatureIcon />, label: "100kg Capacity" },
@@ -331,7 +331,7 @@ const products = [
     name: "Pulse Power Electric Wheelchair",
     description:
       "Designed for comfort, built for freedom. Experience smooth, safe, and independent mobility every day with responsive controls.",
-    price: "₹54,999",
+    price: "₹61,999",
     features: [
       { icon: <BatteryFeatureIcon />, label: "Long Battery" },
       { icon: <ShieldFeatureIcon />, label: "Safe & Reliable" },
@@ -343,7 +343,7 @@ const products = [
     name: "Pulse Comfort Reclining Wheelchair",
     description:
       "Exceptional ergonomic support featuring full back recline and plush memory foam padding for maximum posture comfort.",
-    price: "₹15,499",
+    price: "₹64,999",
     features: [
       { icon: <CushionFeatureIcon />, label: "Memory Foam" },
       { icon: <SettingsFeatureIcon />, label: "Recline Support" },
@@ -355,7 +355,7 @@ const products = [
     name: "Pulse Speed Electric Wheelchair",
     description:
       "High-performance dual motors engineered for extended 30km range and faster acceleration over inclines and rough roads.",
-    price: "₹72,999",
+    price: "₹74,999",
     features: [
       { icon: <SpeedFeatureIcon />, label: "High Speed" },
       { icon: <BatteryFeatureIcon />, label: "30km Range" },
@@ -367,7 +367,7 @@ const products = [
     name: "Pulse Attendant-propelled Wheelchair",
     description:
       "Ergonomically designed for caregivers with dual hand-brakes and smooth steering for effortless pushing and maneuvering.",
-    price: "₹10,499",
+    price: "₹57,999",
     features: [
       { icon: <HandFeatureIcon />, label: "Caregiver Brakes" },
       { icon: <FeatherFeatureIcon />, label: "Light Frame" },
@@ -379,7 +379,7 @@ const products = [
     name: "Pulse Self-propelled Wheelchair",
     description:
       "Ergonomic hand-rim propulsion giving riders full personal mobility, confidence, and independent daily control.",
-    price: "₹10,999",
+    price: "₹59,999",
     features: [
       { icon: <WheelsFeatureIcon />, label: "Hand-Rim Drive" },
       { icon: <ShieldFeatureIcon />, label: "Safe Brakes" },
@@ -391,7 +391,7 @@ const products = [
     name: "Pulse Junior Pediatric Wheelchair",
     description:
       "Vibrant, lightweight, and fully adjustable to grow alongside your child while providing safe, comfortable daily mobility.",
-    price: "₹9,999",
+    price: "₹56,999",
     features: [
       { icon: <SettingsFeatureIcon />, label: "Growth Adjust" },
       { icon: <ShieldFeatureIcon />, label: "Child Safe" },
@@ -403,7 +403,7 @@ const products = [
     name: "Pulse Transit Transport Wheelchair",
     description:
       "Compact and narrow-frame transport chair built for quick trips, doctor visits, narrow doorways, and tight spaces.",
-    price: "₹8,999",
+    price: "₹62,999",
     features: [
       { icon: <SuitcaseFeatureIcon />, label: "Cabin Size" },
       { icon: <FeatherFeatureIcon />, label: "8.5kg Frame" },
@@ -415,7 +415,7 @@ const products = [
     name: "Pulse Bariatric Wheelchair",
     description:
       "Reinforced heavy-duty steel frame designed for maximum strength, extra seat width, and 160kg weight capacity.",
-    price: "₹19,999",
+    price: "₹82,999",
     features: [
       { icon: <ShieldFeatureIcon />, label: "160kg Heavy Duty" },
       { icon: <CushionFeatureIcon />, label: "Extra Wide" },
@@ -544,67 +544,67 @@ export default function Home() {
       </section>
 
       {/* ── Best Wheelchairs ────────────────────────────────────────────────── */}
-      <section className="mx-auto mt-20 w-full max-w-7xl px-6">
+      <section className="mx-auto mt-20 w-full max-w-7xl px-8 sm:px-12 lg:px-16">
         <div className="mb-8">
           <h2 className="text-3xl font-bold tracking-tight">Best Wheelchairs</h2>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           {products.map((p) => (
             <div
               key={p.name}
-              className="group flex flex-col overflow-hidden rounded-[24px] bg-[#EEF4F8]/80 p-2 shadow-sm transition-shadow hover:shadow-md border border-slate-200/60"
+              className="group flex flex-col overflow-hidden rounded-[26px] bg-[#EEF4F8]/80 p-2.5 shadow-sm transition-shadow hover:shadow-md border border-slate-200/60"
             >
               {/* Top Image area with soft gradient */}
-              <div className="relative h-40 w-full rounded-[18px] bg-gradient-to-b from-[#E2EDF7] via-[#EEF5FC] to-[#F8FBFE] flex items-center justify-center p-3 overflow-hidden">
+              <div className="relative h-48 sm:h-52 w-full rounded-[20px] bg-gradient-to-b from-[#E2EDF7] via-[#EEF5FC] to-[#F8FBFE] flex items-center justify-center p-4 overflow-hidden">
                 {/* Chevron buttons */}
                 <button
                   type="button"
                   aria-label="Previous image"
-                  className="absolute left-2 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3 [&>svg]:w-3"
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5"
                 >
                   <ChevronLeftIcon />
                 </button>
 
-                <div className="flex h-full w-full items-center justify-center text-navy/70 [&>svg]:h-14 [&>svg]:w-14">
+                <div className="flex h-full w-full items-center justify-center text-navy/70 [&>svg]:h-16 [&>svg]:w-16">
                   <WheelchairIcon />
                 </div>
 
                 <button
                   type="button"
                   aria-label="Next image"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3 [&>svg]:w-3"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5"
                 >
                   <ChevronRightIcon />
                 </button>
               </div>
 
               {/* White rounded panel overlapping the top image */}
-              <div className="relative z-10 -mt-6 flex flex-1 flex-col justify-between rounded-[20px] bg-white p-3.5 shadow-sm">
+              <div className="relative z-10 -mt-8 flex flex-1 flex-col justify-between rounded-[22px] bg-white p-4 sm:p-5 shadow-sm">
                 {/* Pagination Dots */}
-                <div className="mb-2.5 flex items-center justify-center gap-1">
-                  <span className="h-1 w-4 rounded-full bg-orange" />
-                  <span className="h-1 w-1 rounded-full bg-orange/20" />
-                  <span className="h-1 w-1 rounded-full bg-orange/20" />
+                <div className="mb-3 flex items-center justify-center gap-1.5">
+                  <span className="h-1.5 w-5 rounded-full bg-orange" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-orange/20" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-orange/20" />
                 </div>
 
                 {/* Title & Description */}
                 <div>
-                  <h3 className="font-serif text-sm font-bold leading-tight text-navy mb-1 line-clamp-2 min-h-[2.5rem] flex items-start">
+                  <h3 className="font-serif text-base sm:text-lg font-bold leading-tight text-navy mb-1.5 min-h-[2.75rem] flex items-start">
                     {p.name}
                   </h3>
-                  <p className="text-[11px] text-zinc-500 leading-snug mb-3 line-clamp-2 min-h-[1.75rem]">
+                  <p className="text-xs text-zinc-500 leading-relaxed mb-4 line-clamp-2 min-h-[2.25rem]">
                     {p.description}
                   </p>
 
                   {/* 4 Feature Icons Row */}
-                  <div className="mb-3.5 grid grid-cols-4 gap-1 text-center">
+                  <div className="mb-4 grid grid-cols-4 gap-1.5 text-center">
                     {p.features.map((f, idx) => (
                       <div key={idx} className="flex flex-col items-center">
-                        <div className="mb-1 flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange [&>svg]:h-4 [&>svg]:w-4">
+                        <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-full bg-orange/10 text-orange [&>svg]:h-4.5 [&>svg]:w-4.5">
                           {f.icon}
                         </div>
-                        <span className="text-[9px] font-medium leading-tight text-zinc-600 line-clamp-1">
+                        <span className="text-[10px] font-medium leading-tight text-zinc-600 line-clamp-1">
                           {f.label}
                         </span>
                       </div>
@@ -614,22 +614,22 @@ export default function Home() {
 
                 {/* Price & Actions Row */}
                 <div>
-                  <div className="mb-3 flex items-center justify-between">
-                    <span className="font-sans text-lg font-extrabold text-navy">
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="font-sans text-xl sm:text-2xl font-extrabold text-navy">
                       {p.price}
                     </span>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-2">
                       <button
                         type="button"
                         aria-label="Call specialist"
-                        className="flex h-7 w-7 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-3.5 [&>svg]:w-3.5"
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
                       >
                         <PhoneIcon />
                       </button>
                       <button
                         type="button"
                         aria-label="Add to cart"
-                        className="flex h-7 w-7 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-3.5 [&>svg]:w-3.5"
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
                       >
                         <CartIcon />
                       </button>
@@ -639,7 +639,7 @@ export default function Home() {
                   {/* Buy Now Button */}
                   <button
                     type="button"
-                    className="flex w-full items-center justify-center gap-1.5 rounded-full bg-orange py-2 px-3 text-xs font-bold text-white shadow-sm shadow-orange/20 transition-colors hover:bg-orange-hover [&>svg]:h-3.5 [&>svg]:w-3.5"
+                    className="flex w-full items-center justify-center gap-2 rounded-full bg-orange py-2.5 px-4 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover [&>svg]:h-4 [&>svg]:w-4"
                   >
                     <span>Buy Now</span>
                     <ArrowRightIcon />
