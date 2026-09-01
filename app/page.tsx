@@ -148,20 +148,281 @@ function FeatherIcon() {
   );
 }
 
+function ChevronLeftIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  );
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
+      <path d="M9 18l6-6-6-6" />
+    </svg>
+  );
+}
+
+function BatteryFeatureIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+      <rect x="2" y="7" width="16" height="10" rx="2" />
+      <path d="M22 11v2" />
+      <path d="M6 11v2M10 10v4" />
+    </svg>
+  );
+}
+
+function ShieldFeatureIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    </svg>
+  );
+}
+
+function WheelsFeatureIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 3v6M12 15v6" />
+    </svg>
+  );
+}
+
+function FoldFeatureIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+      <path d="M4 19h16M4 5h16M12 5v14M8 9l4-4 4 4M8 15l4 4 4-4" />
+    </svg>
+  );
+}
+
+function FeatherFeatureIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+      <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
+      <path d="M16 8L2 22" />
+    </svg>
+  );
+}
+
+function SuitcaseFeatureIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+      <rect x="3" y="6" width="18" height="14" rx="2" />
+      <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+    </svg>
+  );
+}
+
+function SpeedFeatureIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+      <path d="M12 14l3-5" />
+      <path d="M3.34 17a10 10 0 1 1 17.32 0" />
+    </svg>
+  );
+}
+
+function HeartFeatureIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </svg>
+  );
+}
+
+function CushionFeatureIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+      <rect x="3" y="8" width="18" height="10" rx="3" />
+      <path d="M3 13h18" />
+    </svg>
+  );
+}
+
+function SettingsFeatureIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>
+  );
+}
+
+function HandFeatureIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
+      <path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8" />
+      <path d="M18 11a2 2 0 0 1 4 0v5a7 7 0 0 1-7 7h-2a7 7 0 0 1-7-7v-3.5" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+function CartIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-5 w-5">
+      <circle cx="9" cy="21" r="1" />
+      <circle cx="20" cy="21" r="1" />
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+    </svg>
+  );
+}
+
+function ArrowRightIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="h-5 w-5">
+      <path d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
+  );
+}
+
 /* ─── Product data ───────────────────────────────────────────────────────────── */
 
 const products = [
-  { name: "Pulse Foldable Travel Wheelchair", spec: "Ultra-light 9.5kg · 100kg capacity", price: "₹11,999" },
-  { name: "Pulse Prime Electric Wheelchair", spec: "Smart controls · 110kg capacity", price: "₹68,999" },
-  { name: "Pulse Lite Manual Wheelchair", spec: "Aluminium frame · 9.8kg", price: "₹9,499" },
-  { name: "Pulse Power Electric Wheelchair", spec: "Joystick control · 25km range", price: "₹54,999" },
-  { name: "Pulse Comfort Reclining Wheelchair", spec: "Padded recline seat", price: "₹15,499" },
-  { name: "Pulse Speed Electric Wheelchair", spec: "High-speed motor · 115kg capacity", price: "₹72,999" },
-  { name: "Pulse Attendant-propelled Wheelchair", spec: "Caregiver push handles", price: "₹10,499" },
-  { name: "Pulse Self-propelled Wheelchair", spec: "Hand-rim drive wheels", price: "₹10,999" },
-  { name: "Pulse Junior Pediatric Wheelchair", spec: "Adjustable frame, ages 4–12", price: "₹9,999" },
-  { name: "Pulse Transit Transport Wheelchair", spec: "Compact, airline cabin size", price: "₹8,999" },
-  { name: "Pulse Bariatric Wheelchair", spec: "Reinforced heavy-duty frame · 160kg capacity", price: "₹19,999" },
+  {
+    name: "Pulse Foldable Travel Wheelchair",
+    description:
+      "Engineered for effortless portability and daily convenience. Folds in seconds for seamless car boot storage and airplane travel.",
+    price: "₹11,999",
+    features: [
+      { icon: <FeatherFeatureIcon />, label: "Ultra Light" },
+      { icon: <FoldFeatureIcon />, label: "Foldable" },
+      { icon: <SuitcaseFeatureIcon />, label: "Travel Ready" },
+      { icon: <ShieldFeatureIcon />, label: "100kg Capacity" },
+    ],
+  },
+  {
+    name: "Pulse Prime Electric Wheelchair",
+    description:
+      "Designed for comfort, built for freedom. Experience smooth joystick control, safe movement, and independent mobility every day.",
+    price: "₹68,999",
+    features: [
+      { icon: <BatteryFeatureIcon />, label: "Long Battery" },
+      { icon: <ShieldFeatureIcon />, label: "Safe & Reliable" },
+      { icon: <WheelsFeatureIcon />, label: "All Terrain" },
+      { icon: <FoldFeatureIcon />, label: "Foldable" },
+    ],
+  },
+  {
+    name: "Pulse Lite Manual Wheelchair",
+    description:
+      "Ultra-lightweight aluminum construction providing smooth maneuverability, easy folding, and dependable daily strength.",
+    price: "₹9,499",
+    features: [
+      { icon: <FeatherFeatureIcon />, label: "9.8kg Light" },
+      { icon: <ShieldFeatureIcon />, label: "100kg Capacity" },
+      { icon: <WheelsFeatureIcon />, label: "Smooth Glide" },
+      { icon: <FoldFeatureIcon />, label: "Quick Fold" },
+    ],
+  },
+  {
+    name: "Pulse Power Electric Wheelchair",
+    description:
+      "Designed for comfort, built for freedom. Experience smooth, safe, and independent mobility every day with responsive controls.",
+    price: "₹54,999",
+    features: [
+      { icon: <BatteryFeatureIcon />, label: "Long Battery" },
+      { icon: <ShieldFeatureIcon />, label: "Safe & Reliable" },
+      { icon: <WheelsFeatureIcon />, label: "All Terrain" },
+      { icon: <FoldFeatureIcon />, label: "Foldable" },
+    ],
+  },
+  {
+    name: "Pulse Comfort Reclining Wheelchair",
+    description:
+      "Exceptional ergonomic support featuring full back recline and plush memory foam padding for maximum posture comfort.",
+    price: "₹15,499",
+    features: [
+      { icon: <CushionFeatureIcon />, label: "Memory Foam" },
+      { icon: <SettingsFeatureIcon />, label: "Recline Support" },
+      { icon: <ShieldFeatureIcon />, label: "Heavy Duty" },
+      { icon: <HeartFeatureIcon />, label: "Headrest Adjust" },
+    ],
+  },
+  {
+    name: "Pulse Speed Electric Wheelchair",
+    description:
+      "High-performance dual motors engineered for extended 30km range and faster acceleration over inclines and rough roads.",
+    price: "₹72,999",
+    features: [
+      { icon: <SpeedFeatureIcon />, label: "High Speed" },
+      { icon: <BatteryFeatureIcon />, label: "30km Range" },
+      { icon: <ShieldFeatureIcon />, label: "115kg Capacity" },
+      { icon: <WheelsFeatureIcon />, label: "Suspension" },
+    ],
+  },
+  {
+    name: "Pulse Attendant-propelled Wheelchair",
+    description:
+      "Ergonomically designed for caregivers with dual hand-brakes and smooth steering for effortless pushing and maneuvering.",
+    price: "₹10,499",
+    features: [
+      { icon: <HandFeatureIcon />, label: "Caregiver Brakes" },
+      { icon: <FeatherFeatureIcon />, label: "Light Frame" },
+      { icon: <FoldFeatureIcon />, label: "Compact Storage" },
+      { icon: <HeartFeatureIcon />, label: "Ergonomic" },
+    ],
+  },
+  {
+    name: "Pulse Self-propelled Wheelchair",
+    description:
+      "Ergonomic hand-rim propulsion giving riders full personal mobility, confidence, and independent daily control.",
+    price: "₹10,999",
+    features: [
+      { icon: <WheelsFeatureIcon />, label: "Hand-Rim Drive" },
+      { icon: <ShieldFeatureIcon />, label: "Safe Brakes" },
+      { icon: <FeatherFeatureIcon />, label: "Lightweight" },
+      { icon: <HeartFeatureIcon />, label: "All Day Comfort" },
+    ],
+  },
+  {
+    name: "Pulse Junior Pediatric Wheelchair",
+    description:
+      "Vibrant, lightweight, and fully adjustable to grow alongside your child while providing safe, comfortable daily mobility.",
+    price: "₹9,999",
+    features: [
+      { icon: <SettingsFeatureIcon />, label: "Growth Adjust" },
+      { icon: <ShieldFeatureIcon />, label: "Child Safe" },
+      { icon: <FeatherFeatureIcon />, label: "7kg Ultra Light" },
+      { icon: <CushionFeatureIcon />, label: "Padded Comfort" },
+    ],
+  },
+  {
+    name: "Pulse Transit Transport Wheelchair",
+    description:
+      "Compact and narrow-frame transport chair built for quick trips, doctor visits, narrow doorways, and tight spaces.",
+    price: "₹8,999",
+    features: [
+      { icon: <SuitcaseFeatureIcon />, label: "Cabin Size" },
+      { icon: <FeatherFeatureIcon />, label: "8.5kg Frame" },
+      { icon: <FoldFeatureIcon />, label: "Quick Fold" },
+      { icon: <ShieldFeatureIcon />, label: "110kg Capacity" },
+    ],
+  },
+  {
+    name: "Pulse Bariatric Wheelchair",
+    description:
+      "Reinforced heavy-duty steel frame designed for maximum strength, extra seat width, and 160kg weight capacity.",
+    price: "₹19,999",
+    features: [
+      { icon: <ShieldFeatureIcon />, label: "160kg Heavy Duty" },
+      { icon: <CushionFeatureIcon />, label: "Extra Wide" },
+      { icon: <SettingsFeatureIcon />, label: "Steel Frame" },
+      { icon: <HeartFeatureIcon />, label: "Plush Padding" },
+    ],
+  },
 ];
 
 /* ─── Category data ──────────────────────────────────────────────────────────── */
@@ -288,31 +549,102 @@ export default function Home() {
           <h2 className="text-3xl font-bold tracking-tight">Best Wheelchairs</h2>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {products.map((p) => (
             <div
               key={p.name}
-              className="group flex flex-col rounded-2xl border border-navy/5 bg-white p-5 shadow-sm transition-shadow hover:shadow-md"
+              className="group flex flex-col overflow-hidden rounded-[32px] bg-[#EEF4F8]/80 p-2.5 sm:p-3 shadow-sm transition-shadow hover:shadow-lg border border-slate-200/60"
             >
-              {/* Product image placeholder */}
-              <div className="mb-4 flex aspect-square items-center justify-center rounded-xl bg-offwhite">
-                <WheelchairIcon />
-              </div>
-
-              <h3 className="text-base font-semibold">{p.name}</h3>
-              <p className="mt-1 text-xs text-warm-gray leading-relaxed">{p.spec}</p>
-
-              <div className="mt-auto flex items-center justify-between pt-4">
-                <span className="text-lg font-bold">{p.price}</span>
+              {/* Top Image area with soft gradient */}
+              <div className="relative h-64 sm:h-72 w-full rounded-[24px] bg-gradient-to-b from-[#E2EDF7] via-[#EEF5FC] to-[#F8FBFE] flex items-center justify-center p-6 overflow-hidden">
+                {/* Chevron buttons */}
                 <button
                   type="button"
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-orange text-white transition-colors hover:bg-orange-hover"
-                  aria-label={`Add ${p.name} to cart`}
+                  aria-label="Previous image"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-zinc-700 shadow-md transition-transform hover:scale-105 active:scale-95"
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} className="h-4 w-4">
-                    <path d="M12 5v14M5 12h14" />
-                  </svg>
+                  <ChevronLeftIcon />
                 </button>
+
+                <div className="flex h-full w-full items-center justify-center text-navy/70">
+                  <WheelchairIcon />
+                </div>
+
+                <button
+                  type="button"
+                  aria-label="Next image"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-zinc-700 shadow-md transition-transform hover:scale-105 active:scale-95"
+                >
+                  <ChevronRightIcon />
+                </button>
+              </div>
+
+              {/* White rounded panel overlapping the top image */}
+              <div className="relative z-10 -mt-10 sm:-mt-12 flex flex-1 flex-col justify-between rounded-[26px] bg-white p-5 sm:p-6 shadow-sm">
+                {/* Pagination Dots */}
+                <div className="mb-4 flex items-center justify-center gap-1.5">
+                  <span className="h-1.5 w-6 rounded-full bg-orange" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-orange/20" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-orange/20" />
+                </div>
+
+                {/* Title & Description */}
+                <div>
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold leading-tight text-navy mb-2 min-h-[3.25rem] flex items-center">
+                    {p.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed mb-6 line-clamp-3">
+                    {p.description}
+                  </p>
+
+                  {/* 4 Feature Icons Row */}
+                  <div className="mb-6 grid grid-cols-4 gap-2 text-center">
+                    {p.features.map((f, idx) => (
+                      <div key={idx} className="flex flex-col items-center">
+                        <div className="mb-1.5 flex h-11 w-11 items-center justify-center rounded-full bg-orange/10 text-orange">
+                          {f.icon}
+                        </div>
+                        <span className="text-[10px] sm:text-[11px] font-medium leading-tight text-zinc-600">
+                          {f.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Price & Actions Row */}
+                <div>
+                  <div className="mb-5 flex items-center justify-between">
+                    <span className="font-sans text-2xl sm:text-3xl font-extrabold text-navy">
+                      {p.price}
+                    </span>
+                    <div className="flex items-center gap-2.5">
+                      <button
+                        type="button"
+                        aria-label="Call specialist"
+                        className="flex h-10 w-10 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20"
+                      >
+                        <PhoneIcon />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label="Add to cart"
+                        className="flex h-10 w-10 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20"
+                      >
+                        <CartIcon />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Buy Now Button */}
+                  <button
+                    type="button"
+                    className="flex w-full items-center justify-center gap-2 rounded-full bg-orange py-3.5 px-6 text-sm sm:text-base font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover"
+                  >
+                    <span>Buy Now</span>
+                    <ArrowRightIcon />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
