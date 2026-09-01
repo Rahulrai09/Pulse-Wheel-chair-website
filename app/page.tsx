@@ -292,135 +292,146 @@ function ArrowRightIcon() {
 
 const products = [
   {
-    name: "Pulse Foldable Travel Wheelchair",
+    name: "Pulse Innovax",
     description:
-      "Engineered for effortless portability and daily convenience. Folds in seconds for seamless car boot storage and airplane travel.",
+      "Model 6016A electric wheelchair with innovative design for enhanced comfort.",
+    image: "/products/innovax-01.webp",
     price: "₹58,999",
     features: [
-      { icon: <FeatherFeatureIcon />, label: "Ultra Light" },
-      { icon: <FoldFeatureIcon />, label: "Foldable" },
-      { icon: <SuitcaseFeatureIcon />, label: "Travel Ready" },
-      { icon: <ShieldFeatureIcon />, label: "100kg Capacity" },
+      { icon: <SettingsFeatureIcon />, label: "360° Joystick" },
+      { icon: <ShieldFeatureIcon />, label: "Shock Absorb" },
+      { icon: <FoldFeatureIcon />, label: "Foldable Frame" },
+      { icon: <HeartFeatureIcon />, label: "Extra Comfort" },
     ],
   },
   {
-    name: "Pulse Prime Electric Wheelchair",
+    name: "Pulse Joylite 1",
     description:
-      "Designed for comfort, built for freedom. Experience smooth joystick control, safe movement, and independent mobility every day.",
+      "Ultra-lightweight electric wheelchair, foldable frame, extended battery.",
+    image: "/products/joylite-1-01.webp",
     price: "₹68,999",
     features: [
-      { icon: <BatteryFeatureIcon />, label: "Long Battery" },
-      { icon: <ShieldFeatureIcon />, label: "Safe & Reliable" },
-      { icon: <WheelsFeatureIcon />, label: "All Terrain" },
+      { icon: <FeatherFeatureIcon />, label: "21kg Light" },
       { icon: <FoldFeatureIcon />, label: "Foldable" },
+      { icon: <BatteryFeatureIcon />, label: "Long Battery" },
+      { icon: <WheelsFeatureIcon />, label: "Dual Motors" },
     ],
   },
   {
-    name: "Pulse Lite Manual Wheelchair",
+    name: "Pulse Joylite 2",
     description:
-      "Ultra-lightweight aluminum construction providing smooth maneuverability, easy folding, and dependable daily strength.",
+      "Upgraded battery capacity, improved seat comfort, intuitive joystick.",
+    image: "/products/joylite-2-01.webp",
     price: "₹55,999",
     features: [
-      { icon: <FeatherFeatureIcon />, label: "9.8kg Light" },
-      { icon: <ShieldFeatureIcon />, label: "100kg Capacity" },
-      { icon: <WheelsFeatureIcon />, label: "Smooth Glide" },
-      { icon: <FoldFeatureIcon />, label: "Quick Fold" },
+      { icon: <BatteryFeatureIcon />, label: "Plus Battery" },
+      { icon: <CushionFeatureIcon />, label: "Plush Seat" },
+      { icon: <SettingsFeatureIcon />, label: "Smart Control" },
+      { icon: <ShieldFeatureIcon />, label: "Safe Brakes" },
     ],
   },
   {
-    name: "Pulse Power Electric Wheelchair",
+    name: "Pulse Aerodrive 1",
     description:
-      "Designed for comfort, built for freedom. Experience smooth, safe, and independent mobility every day with responsive controls.",
+      "Lightweight aluminium frame, dual motors, smart joystick.",
+    image: "/products/aerodrive-1-01.webp",
     price: "₹61,999",
     features: [
-      { icon: <BatteryFeatureIcon />, label: "Long Battery" },
-      { icon: <ShieldFeatureIcon />, label: "Safe & Reliable" },
-      { icon: <WheelsFeatureIcon />, label: "All Terrain" },
+      { icon: <FeatherFeatureIcon />, label: "Alloy Frame" },
+      { icon: <WheelsFeatureIcon />, label: "Dual 250W" },
+      { icon: <SettingsFeatureIcon />, label: "Smart Control" },
+      { icon: <ShieldFeatureIcon />, label: "Electro Brake" },
+    ],
+  },
+  {
+    name: "Pulse Aerodrive 2",
+    description:
+      "36kg lightweight build, 24V 10Ah battery, 15-20km range.",
+    image: "/products/aerodrive-2-01.webp",
+    price: "₹64,999",
+    features: [
+      { icon: <FeatherFeatureIcon />, label: "36kg Light" },
+      { icon: <BatteryFeatureIcon />, label: "24V 10Ah" },
+      { icon: <SpeedFeatureIcon />, label: "15-20km Range" },
       { icon: <FoldFeatureIcon />, label: "Foldable" },
     ],
   },
   {
-    name: "Pulse Comfort Reclining Wheelchair",
+    name: "Pulse Cruza",
     description:
-      "Exceptional ergonomic support featuring full back recline and plush memory foam padding for maximum posture comfort.",
-    price: "₹64,999",
-    features: [
-      { icon: <CushionFeatureIcon />, label: "Memory Foam" },
-      { icon: <SettingsFeatureIcon />, label: "Recline Support" },
-      { icon: <ShieldFeatureIcon />, label: "Heavy Duty" },
-      { icon: <HeartFeatureIcon />, label: "Headrest Adjust" },
-    ],
-  },
-  {
-    name: "Pulse Speed Electric Wheelchair",
-    description:
-      "High-performance dual motors engineered for extended 30km range and faster acceleration over inclines and rough roads.",
+      "Electric recline to 160°, one-hand 360° joystick control.",
+    image: "/products/cruza-01.webp",
     price: "₹74,999",
     features: [
-      { icon: <SpeedFeatureIcon />, label: "High Speed" },
-      { icon: <BatteryFeatureIcon />, label: "30km Range" },
-      { icon: <ShieldFeatureIcon />, label: "115kg Capacity" },
-      { icon: <WheelsFeatureIcon />, label: "Suspension" },
+      { icon: <SettingsFeatureIcon />, label: "160° Recline" },
+      { icon: <HandFeatureIcon />, label: "One Hand 360°" },
+      { icon: <ShieldFeatureIcon />, label: "Heavy Iron" },
+      { icon: <CushionFeatureIcon />, label: "Rest Support" },
     ],
   },
   {
-    name: "Pulse Attendant-propelled Wheelchair",
+    name: "Pulse Xtrion",
     description:
-      "Ergonomically designed for caregivers with dual hand-brakes and smooth steering for effortless pushing and maneuvering.",
+      "Heavy-duty electric wheelchair for all-terrain mobility.",
+    image: "/products/xtrion-01.webp",
     price: "₹57,999",
     features: [
-      { icon: <HandFeatureIcon />, label: "Caregiver Brakes" },
-      { icon: <FeatherFeatureIcon />, label: "Light Frame" },
-      { icon: <FoldFeatureIcon />, label: "Compact Storage" },
-      { icon: <HeartFeatureIcon />, label: "Ergonomic" },
+      { icon: <ShieldFeatureIcon />, label: "Heavy Duty" },
+      { icon: <WheelsFeatureIcon />, label: "All Terrain" },
+      { icon: <SpeedFeatureIcon />, label: "High Torque" },
+      { icon: <BatteryFeatureIcon />, label: "Long Range" },
     ],
   },
   {
-    name: "Pulse Self-propelled Wheelchair",
+    name: "Pulse Motion Pro 1",
     description:
-      "Ergonomic hand-rim propulsion giving riders full personal mobility, confidence, and independent daily control.",
+      "Heavy-duty foldable, long-range battery, all-terrain control.",
+    image: "/products/motion-pro-1-01.webp",
     price: "₹59,999",
     features: [
-      { icon: <WheelsFeatureIcon />, label: "Hand-Rim Drive" },
-      { icon: <ShieldFeatureIcon />, label: "Safe Brakes" },
-      { icon: <FeatherFeatureIcon />, label: "Lightweight" },
-      { icon: <HeartFeatureIcon />, label: "All Day Comfort" },
+      { icon: <FoldFeatureIcon />, label: "Heavy Fold" },
+      { icon: <BatteryFeatureIcon />, label: "Long Range" },
+      { icon: <WheelsFeatureIcon />, label: "All Terrain" },
+      { icon: <ShieldFeatureIcon />, label: "Rugged Build" },
     ],
   },
   {
-    name: "Pulse Junior Pediatric Wheelchair",
+    name: "Pulse Motion Pro 2",
     description:
-      "Vibrant, lightweight, and fully adjustable to grow alongside your child while providing safe, comfortable daily mobility.",
+      "24V 20Ah battery, 15-20km range, 24-inch alloy rear wheel.",
+    image: "/products/motion-pro-2-01.webp",
     price: "₹56,999",
     features: [
-      { icon: <SettingsFeatureIcon />, label: "Growth Adjust" },
-      { icon: <ShieldFeatureIcon />, label: "Child Safe" },
-      { icon: <FeatherFeatureIcon />, label: "7kg Ultra Light" },
-      { icon: <CushionFeatureIcon />, label: "Padded Comfort" },
+      { icon: <BatteryFeatureIcon />, label: "24V 20Ah" },
+      { icon: <WheelsFeatureIcon />, label: "24\" Rear Wheel" },
+      { icon: <SpeedFeatureIcon />, label: "15-20km Range" },
+      { icon: <ShieldFeatureIcon />, label: "Alloy Drive" },
     ],
   },
   {
-    name: "Pulse Transit Transport Wheelchair",
+    name: "Pulse Smartride 1",
     description:
-      "Compact and narrow-frame transport chair built for quick trips, doctor visits, narrow doorways, and tight spaces.",
+      "26kg carbon fiber, autofold, 24V 10Ah battery, 15-20km range.",
+    image: "/products/smartride-1-01.webp",
     price: "₹62,999",
     features: [
-      { icon: <SuitcaseFeatureIcon />, label: "Cabin Size" },
-      { icon: <FeatherFeatureIcon />, label: "8.5kg Frame" },
-      { icon: <FoldFeatureIcon />, label: "Quick Fold" },
-      { icon: <ShieldFeatureIcon />, label: "110kg Capacity" },
+      { icon: <FeatherFeatureIcon />, label: "Carbon Fiber" },
+      { icon: <FoldFeatureIcon />, label: "Autofold" },
+      { icon: <BatteryFeatureIcon />, label: "24V 10Ah" },
+      { icon: <SpeedFeatureIcon />, label: "15-20km Range" },
     ],
   },
   {
-    name: "Pulse Bariatric Wheelchair",
+    name: "Pulse Smartride 2",
     description:
-      "Reinforced heavy-duty steel frame designed for maximum strength, extra seat width, and 160kg weight capacity.",
+      "One-touch fold mechanism, travel-friendly compact design.",
+    image: "/products/smartride-2-01.webp",
     price: "₹82,999",
     features: [
-      { icon: <ShieldFeatureIcon />, label: "160kg Heavy Duty" },
-      { icon: <CushionFeatureIcon />, label: "Extra Wide" },
-      { icon: <SettingsFeatureIcon />, label: "Steel Frame" },
-      { icon: <HeartFeatureIcon />, label: "Plush Padding" },
+      { icon: <FoldFeatureIcon />, label: "One-Touch" },
+      { icon: <SuitcaseFeatureIcon />, label: "Compact Travel" },
+      { icon: <FeatherFeatureIcon />, label: "Lightweight" },
+      { icon: <SettingsFeatureIcon />, label: "Smart Control" },
     ],
   },
 ];
@@ -566,8 +577,14 @@ export default function Home() {
                   <ChevronLeftIcon />
                 </button>
 
-                <div className="flex h-full w-full items-center justify-center text-navy/70 [&>svg]:h-16 [&>svg]:w-16">
-                  <WheelchairIcon />
+                <div className="relative h-full w-full flex items-center justify-center">
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    className="object-contain p-1.5 transition-transform duration-300 group-hover:scale-105"
+                  />
                 </div>
 
                 <button
