@@ -4,7 +4,7 @@ import TrustTicker from "./TrustTicker";
 
 export default function Header() {
   return (
-    <header className="bg-offwhite text-navy">
+    <header className="bg-offwhite text-navy border-b border-slate-200/80">
       {/* Utility strip */}
       <TrustTicker />
 
