@@ -25,7 +25,7 @@ export default function TopUtilityTicker() {
   }, []);
 
   return (
-    <div className="bg-navy text-white text-xs py-2 px-6">
+    <div className="bg-navy text-white text-xs py-1.5 px-6">
       <div className="mx-auto flex max-w-7xl items-center justify-center text-center">
         <span
           className={`font-medium tracking-wide transition-opacity duration-300 ${
