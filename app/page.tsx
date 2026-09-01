@@ -544,12 +544,12 @@ export default function Home() {
       </section>
 
       {/* ── Best Wheelchairs ────────────────────────────────────────────────── */}
-      <section className="mx-auto mt-20 w-full max-w-7xl px-8 sm:px-12 lg:px-16">
+      <section className="mx-auto mt-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h2 className="text-3xl font-bold tracking-tight">Best Wheelchairs</h2>
         </div>
 
-        <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           {products.map((p) => (
             <div
               key={p.name}
@@ -598,13 +598,13 @@ export default function Home() {
                   </p>
 
                   {/* 4 Feature Icons Row */}
-                  <div className="mb-4 grid grid-cols-4 gap-1.5 text-center">
+                  <div className="mb-4 grid grid-cols-4 gap-1 text-center">
                     {p.features.map((f, idx) => (
                       <div key={idx} className="flex flex-col items-center">
-                        <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-full bg-orange/10 text-orange [&>svg]:h-4.5 [&>svg]:w-4.5">
+                        <div className="mb-1 flex h-7.5 w-7.5 items-center justify-center rounded-full bg-orange/10 text-orange [&>svg]:h-3.5 [&>svg]:w-3.5">
                           {f.icon}
                         </div>
-                        <span className="text-[10px] font-medium leading-tight text-zinc-600 line-clamp-1">
+                        <span className="text-[9px] sm:text-[9.5px] font-medium leading-tight text-zinc-600 text-center break-words min-h-[1.75rem] flex items-center justify-center">
                           {f.label}
                         </span>
                       </div>
@@ -615,7 +615,7 @@ export default function Home() {
                 {/* Price & Actions Row */}
                 <div>
                   <div className="mb-4 flex items-center justify-between">
-                    <span className="font-sans text-xl sm:text-2xl font-extrabold text-navy">
+                    <span className="font-sans text-lg sm:text-xl font-extrabold text-navy">
                       {p.price}
                     </span>
                     <div className="flex items-center gap-2">
