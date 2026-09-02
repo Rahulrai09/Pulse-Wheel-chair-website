@@ -8,6 +8,7 @@ export interface Product {
   name: string;
   description: string;
   image: string;
+  alt: string;
   price: string;
   category?: string;
   features: ProductFeature[];
@@ -20,7 +21,8 @@ export const products: Product[] = [
     name: "Pulse Comfort Electric Wheelchair",
     description:
       "Model 6016A electric wheelchair with innovative design for enhanced comfort.",
-    image: "/products/innovax-01.webp",
+    image: "/products/Pulse%20Comfort%20Electric%20Wheel%20Chair%20Png.png",
+    alt: "Pulse Comfort Electric Wheel Chair",
     price: "₹58,999",
     category: "Electric Wheelchair",
     features: [
@@ -46,7 +48,8 @@ export const products: Product[] = [
     name: "Pulse Lightweight Carbon Fiber Wheelchair",
     description:
       "Ultra-lightweight electric wheelchair, foldable frame, extended battery.",
-    image: "/products/joylite-1-01.webp",
+    image: "/products/Pulse%20Lightweight%20Carbon%20Fiber%20Wheel%20chair%20Png.png",
+    alt: "Pulse Lightweight Carbon Fiber Wheel Chair",
     price: "₹68,999",
     category: "Electric Wheelchair",
     features: [
@@ -72,7 +75,8 @@ export const products: Product[] = [
     name: "Pulse Prime Electric Wheelchair",
     description:
       "Upgraded battery capacity, improved seat comfort, intuitive joystick.",
-    image: "/products/joylite-2-01.webp",
+    image: "/products/Pulse%20Prime%20Electric%20Wheel%20chair%20png.png",
+    alt: "Pulse Prime Electric Wheel Chair",
     price: "₹55,999",
     category: "Electric Wheelchair",
     features: [
@@ -98,7 +102,8 @@ export const products: Product[] = [
     name: "Pulse Power Electric Wheelchair",
     description:
       "Lightweight aluminium frame, dual motors, smart joystick.",
-    image: "/products/aerodrive-1-01.webp",
+    image: "/products/Pulse%20Power%20Electric%20Wheel%20chair%20Png.png",
+    alt: "Pulse Power Electric Wheel Chair",
     price: "₹61,999",
     category: "Electric Wheelchair",
     features: [
@@ -124,7 +129,8 @@ export const products: Product[] = [
     name: "Pulse Endurance Electric Wheelchair",
     description:
       "36kg lightweight build, 24V 10Ah battery, 15-20km range.",
-    image: "/products/aerodrive-2-01.webp",
+    image: "/products/Pulse%20Endurance%20Electric%20Wheel%20chair%20Png.png",
+    alt: "Pulse Endurance Electric Wheel Chair",
     price: "₹64,999",
     category: "Electric Wheelchair",
     features: [
@@ -150,7 +156,8 @@ export const products: Product[] = [
     name: "Pulse Comfort Reclining Wheelchair",
     description:
       "Electric recline to 160°, one-hand 360° joystick control.",
-    image: "/products/cruza-01.webp",
+    image: "/products/Pulse%20Reclining%20Wheel%20Chair%20Png.png",
+    alt: "Pulse Reclining Wheel Chair",
     price: "₹74,999",
     category: "Electric Wheelchair",
     features: [
@@ -176,7 +183,8 @@ export const products: Product[] = [
     name: "Pulse Double Battery Long Range Wheelchair",
     description:
       "Heavy-duty electric wheelchair for all-terrain mobility.",
-    image: "/products/xtrion-01.webp",
+    image: "/products/Pulse%20Double%20Battery%20Long%20Range%20Wheel%20chair%20Png.png",
+    alt: "Pulse Double Battery Long Range Wheel Chair",
     price: "₹57,999",
     category: "Electric Wheelchair",
     features: [
@@ -202,7 +210,8 @@ export const products: Product[] = [
     name: "Pulse Long-Range Electric Wheelchair",
     description:
       "Heavy-duty foldable, long-range battery, all-terrain control.",
-    image: "/products/motion-pro-1-01.webp",
+    image: "/products/Pulse%20Long-Range%20Electric%20Wheel%20chair%20png.png",
+    alt: "Pulse Long-Range Electric Wheel Chair",
     price: "₹59,999",
     category: "Electric Wheelchair",
     features: [
@@ -228,7 +237,8 @@ export const products: Product[] = [
     name: "Pulse Heavy-Duty Foldable Wheelchair",
     description:
       "24V 20Ah battery, 15-20km range, 24-inch alloy rear wheel.",
-    image: "/products/motion-pro-2-01.webp",
+    image: "/products/Pulse%20Heavy-Duty%20Foldable%20Wheel%20Chair%20Png.png",
+    alt: "Pulse Heavy-Duty Foldable Wheel Chair",
     price: "₹56,999",
     category: "Electric Wheelchair",
     features: [
@@ -254,7 +264,8 @@ export const products: Product[] = [
     name: "Pulse Carbon Fiber Smart Wheelchair",
     description:
       "26kg carbon fiber, autofold, 24V 10Ah battery, 15-20km range.",
-    image: "/products/smartride-1-01.webp",
+    image: "/products/Pulse%20Carbon%20Fiber%20Smart%20Wheelchair%20Png.png",
+    alt: "Pulse Carbon Fiber Smart Wheelchair",
     price: "₹62,999",
     category: "Electric Wheelchair",
     features: [
@@ -280,7 +291,8 @@ export const products: Product[] = [
     name: "Pulse Autofold Smart Ride Wheelchair",
     description:
       "One-touch fold mechanism, travel-friendly compact design.",
-    image: "/products/smartride-2-01.webp",
+    image: "/products/Pulse%20Autofold%20Smart%20Ride%20Wheel%20chair%20Png.png",
+    alt: "Pulse Autofold Smart Ride Wheel Chair",
     price: "₹82,999",
     category: "Electric Wheelchair",
     features: [

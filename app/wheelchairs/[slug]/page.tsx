@@ -89,7 +89,7 @@ export default function ProductDetailPage({
               <div className="relative h-full w-full">
                 <Image
                   src={thumbnails[activeImageIndex]}
-                  alt={product.name}
+                  alt={product.alt}
                   fill
                   priority
                   className="object-contain p-2 transition-opacity duration-300"

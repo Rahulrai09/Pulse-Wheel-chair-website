@@ -252,7 +252,7 @@ export default function Home() {
                 <div className="relative h-full w-full flex items-center justify-center">
                   <Image
                     src={p.image}
-                    alt={p.name}
+                    alt={p.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     className="object-contain p-1 scale-105 transition-transform duration-300 group-hover:scale-110"
