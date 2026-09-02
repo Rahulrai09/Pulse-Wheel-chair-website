@@ -22,30 +22,6 @@ export default function Header() {
           />
         </Link>
 
-        {/* Nav links */}
-        <ul className="hidden gap-8 text-sm font-medium md:flex">
-          <li>
-            <Link href="/" className="text-navy hover:text-orange transition-colors">
-              Wheelchairs
-            </Link>
-          </li>
-          <li>
-            <Link href="/" className="text-navy hover:text-orange transition-colors">
-              Electric
-            </Link>
-          </li>
-          <li>
-            <Link href="/" className="text-navy hover:text-orange transition-colors">
-              Accessories
-            </Link>
-          </li>
-          <li>
-            <Link href="/" className="text-navy hover:text-orange transition-colors">
-              About
-            </Link>
-          </li>
-        </ul>
-
         {/* Right — icon buttons */}
         <div className="flex items-center gap-3">
           {/* Search */}
