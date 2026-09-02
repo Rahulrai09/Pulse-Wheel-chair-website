@@ -173,7 +173,7 @@ export const products: Product[] = [
   },
   {
     slug: "xtrion",
-    name: "Pulse Rugged All-Terrain Wheelchair",
+    name: "Pulse Double Battery Long Range Wheelchair",
     description:
       "Heavy-duty electric wheelchair for all-terrain mobility.",
     image: "/products/xtrion-01.webp",
