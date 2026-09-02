@@ -251,7 +251,7 @@ export const products: Product[] = [
   },
   {
     slug: "smartride-1",
-    name: "Pulse Compact Autofold Wheelchair",
+    name: "Pulse Carbon Fiber Smart Wheelchair",
     description:
       "26kg carbon fiber, autofold, 24V 10Ah battery, 15-20km range.",
     image: "/products/smartride-1-01.webp",
