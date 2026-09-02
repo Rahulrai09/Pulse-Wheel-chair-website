@@ -43,7 +43,7 @@ export const products: Product[] = [
   },
   {
     slug: "joylite-1",
-    name: "Pulse Foldable Travel Wheelchair",
+    name: "Pulse Lightweight Carbon Fiber Wheelchair",
     description:
       "Ultra-lightweight electric wheelchair, foldable frame, extended battery.",
     image: "/products/joylite-1-01.webp",
