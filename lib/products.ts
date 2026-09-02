@@ -277,7 +277,7 @@ export const products: Product[] = [
   },
   {
     slug: "smartride-2",
-    name: "Pulse Travel-Ready Foldable Wheelchair",
+    name: "Pulse Autofold Smart Ride Wheelchair",
     description:
       "One-touch fold mechanism, travel-friendly compact design.",
     image: "/products/smartride-2-01.webp",
