@@ -1,18 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FeatureIcon from "./components/FeatureIcon";
-import { products } from "@/lib/products";
+import { products, type Product } from "@/lib/products";
 
-/* ──────────────────────────────────────────────
+/* ──────────────────────────────────────────────────
    Pulse Wheelchair — Homepage
-   Next.js 16 · Tailwind CSS v4 · Server Component
-   ────────────────────────────────────────────── */
+   Next.js 16 · Tailwind CSS v4 · Client Component
+   ────────────────────────────────────────────────── */
 
-// ─── Inline SVG icon components (no external deps) ────────────────────────────
+// ─── Inline SVG icon components (no external deps) ─────────────────────────
 
 /** Reusable wrapper so every category icon is the same size / color */
 function CategoryIcon({ children }: { children: React.ReactNode }) {
@@ -23,7 +24,7 @@ function CategoryIcon({ children }: { children: React.ReactNode }) {
   );
 }
 
-/* ─── Small SVG icons ────────────────────────────────────────────────────────── */
+/* ─── Small SVG icons ─────────────────────────────────────────────────────── */
 
 function BoltIcon() {
   return (
@@ -160,7 +161,7 @@ function ArrowRightIcon() {
   );
 }
 
-/* ─── Category data ──────────────────────────────────────────────────────────── */
+/* ─── Category data ───────────────────────────────────────────────────────── */
 
 const categories = [
   { icon: <BoltIcon />, label: "Power Wheelchair" },
@@ -171,7 +172,7 @@ const categories = [
   { icon: <HeartIcon />, label: "Comfortable Wheelchair" },
 ];
 
-/* ─── Trust Badges data ──────────────────────────────────────────────────────── */
+/* ─── Trust Badges data ───────────────────────────────────────────────────── */
 
 const trustBadges = [
   { icon: <DeliveryIcon />, title: "Free Delivery", desc: "Across 18,000+ pin codes in India" },
@@ -180,9 +181,157 @@ const trustBadges = [
   { icon: <TrialIcon />, title: "7-Day Home Trial", desc: "Love it or return with full refund" },
 ];
 
-/* ═════════════════════════════════════════════════════════════════════════════ */
-/*  Page Component                                                              */
-/* ═════════════════════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════════════════ */
+/*  Product Card — its own component so each card can have its own           */
+/*  independent image-carousel state (hooks can't live inside a .map())      */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+function ProductCard({ p }: { p: Product }) {
+  const images = p.images && p.images.length > 0 ? p.images : [p.image];
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <Link
+      href={`/wheelchairs/${p.slug}`}
+      className="group flex flex-col overflow-hidden rounded-[26px] bg-[#EEF4F8]/80 p-2.5 shadow-sm transition-shadow hover:shadow-md border border-slate-200/60"
+    >
+      {/* Top Image area with soft gradient */}
+      <div className="relative z-10 h-52 sm:h-56 w-full rounded-[20px] bg-gradient-to-b from-[#E2EDF7] via-[#EEF5FC] to-[#F8FBFE] flex items-center justify-center p-3 pb-6">
+        {/* Chevron buttons */}
+        <button
+          type="button"
+          aria-label="Previous image"
+          onClick={handlePrev}
+          className="absolute left-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5 z-20"
+        >
+          <ChevronLeftIcon />
+        </button>
+
+        <div className="relative h-full w-full flex items-center justify-center">
+          <Image
+            src={images[activeIndex]}
+            alt={p.alt}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+            className="object-contain p-1 scale-105 transition-transform duration-300 group-hover:scale-110"
+          />
+        </div>
+
+        <button
+          type="button"
+          aria-label="Next image"
+          onClick={handleNext}
+          className="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5 z-20"
+        >
+          <ChevronRightIcon />
+        </button>
+      </div>
+
+      {/* White rounded panel overlapping the top image */}
+      <div className="relative z-20 -mt-8 flex flex-1 flex-col justify-between rounded-[22px] bg-white p-4 sm:p-5 shadow-sm">
+        {/* Pagination Dots — one per image, active one highlighted */}
+        <div className="mb-3 flex items-center justify-center gap-1.5">
+          {images.map((_, idx) => (
+            <span
+              key={idx}
+              className={
+                idx === activeIndex
+                  ? "h-1.5 w-5 rounded-full bg-orange transition-all"
+                  : "h-1.5 w-1.5 rounded-full bg-orange/20 transition-all"
+              }
+            />
+          ))}
+        </div>
+
+        {/* Title & Description */}
+        <div>
+          <h3 className="font-serif text-lg sm:text-xl font-semibold leading-tight text-navy mb-2 group-hover:text-orange transition-colors">
+            {p.name}
+          </h3>
+          <p className="text-xs sm:text-[13px] text-zinc-500 leading-relaxed mb-4">
+            {p.description}
+          </p>
+
+          {/* 4 Feature Icons Row */}
+          <div className="mb-4 grid grid-cols-4 gap-1 text-center">
+            {p.features.map((f, idx) => (
+              <div key={idx} className="flex flex-col items-center">
+                <div className="mb-1 flex h-7.5 w-7.5 items-center justify-center rounded-full bg-orange/10 text-orange [&>svg]:h-3.5 [&>svg]:w-3.5">
+                  <FeatureIcon iconKey={f.iconKey} />
+                </div>
+                <span className="text-[9px] sm:text-[9.5px] font-medium leading-tight text-zinc-600 text-center break-words min-h-[1.75rem] flex items-center justify-center">
+                  {f.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Price & Actions Row */}
+        <div>
+          <div className="mb-4 flex items-center justify-between">
+            <span className="font-sans text-lg sm:text-xl font-extrabold text-navy">
+              {p.price}
+            </span>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                aria-label="Call specialist"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
+              >
+                <PhoneIcon />
+              </button>
+              <button
+                type="button"
+                aria-label="Add to cart"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
+              >
+                <CartIcon />
+              </button>
+            </div>
+          </div>
+
+          {/* Buy Now Button */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+            className="flex w-full items-center justify-center gap-2 rounded-full bg-orange py-2.5 px-4 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover [&>svg]:h-4 [&>svg]:w-4"
+          >
+            <span>Buy Now</span>
+            <ArrowRightIcon />
+          </button>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/*  Page Component                                                            */
+/* ══════════════════════════════════════════════════════════════════════════ */
 
 export default function Home() {
   return (
@@ -201,7 +350,7 @@ export default function Home() {
         />
       </section>
 
-      {/* ── Category cards ─────────────────────────────────────────────────── */}
+      {/* ── Category cards ──────────────────────────────────────────────────── */}
       <section className="mt-14 mx-auto w-full max-w-6xl px-6">
         <div className="rounded-2xl bg-white p-8 shadow-xl shadow-navy/5">
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
@@ -229,129 +378,7 @@ export default function Home() {
 
         <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           {products.map((p) => (
-            <Link
-              key={p.slug}
-              href={`/wheelchairs/${p.slug}`}
-              className="group flex flex-col overflow-hidden rounded-[26px] bg-[#EEF4F8]/80 p-2.5 shadow-sm transition-shadow hover:shadow-md border border-slate-200/60"
-            >
-              {/* Top Image area with soft gradient */}
-              <div className="relative z-10 h-52 sm:h-56 w-full rounded-[20px] bg-gradient-to-b from-[#E2EDF7] via-[#EEF5FC] to-[#F8FBFE] flex items-center justify-center p-3 pb-6">
-                {/* Chevron buttons */}
-                <button
-                  type="button"
-                  aria-label="Previous image"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                  }}
-                  className="absolute left-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5 z-20"
-                >
-                  <ChevronLeftIcon />
-                </button>
-
-                <div className="relative h-full w-full flex items-center justify-center">
-                  <Image
-                    src={p.image}
-                    alt={p.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-contain p-1 scale-105 transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-
-                <button
-                  type="button"
-                  aria-label="Next image"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                  }}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm transition-transform hover:scale-105 active:scale-95 [&>svg]:h-3.5 [&>svg]:w-3.5 z-20"
-                >
-                  <ChevronRightIcon />
-                </button>
-              </div>
-
-              {/* White rounded panel overlapping the top image */}
-              <div className="relative z-20 -mt-8 flex flex-1 flex-col justify-between rounded-[22px] bg-white p-4 sm:p-5 shadow-sm">
-                {/* Pagination Dots */}
-                <div className="mb-3 flex items-center justify-center gap-1.5">
-                  <span className="h-1.5 w-5 rounded-full bg-orange" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-orange/20" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-orange/20" />
-                </div>
-
-                {/* Title & Description */}
-                <div>
-                  <h3 className="font-serif text-lg sm:text-xl font-semibold leading-tight text-navy mb-2 group-hover:text-orange transition-colors">
-                    {p.name}
-                  </h3>
-                  <p className="text-xs sm:text-[13px] text-zinc-500 leading-relaxed mb-4">
-                    {p.description}
-                  </p>
-
-                  {/* 4 Feature Icons Row */}
-                  <div className="mb-4 grid grid-cols-4 gap-1 text-center">
-                    {p.features.map((f, idx) => (
-                      <div key={idx} className="flex flex-col items-center">
-                        <div className="mb-1 flex h-7.5 w-7.5 items-center justify-center rounded-full bg-orange/10 text-orange [&>svg]:h-3.5 [&>svg]:w-3.5">
-                          <FeatureIcon iconKey={f.iconKey} />
-                        </div>
-                        <span className="text-[9px] sm:text-[9.5px] font-medium leading-tight text-zinc-600 text-center break-words min-h-[1.75rem] flex items-center justify-center">
-                          {f.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Price & Actions Row */}
-                <div>
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="font-sans text-lg sm:text-xl font-extrabold text-navy">
-                      {p.price}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <button
-                        type="button"
-                        aria-label="Call specialist"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                        }}
-                        className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
-                      >
-                        <PhoneIcon />
-                      </button>
-                      <button
-                        type="button"
-                        aria-label="Add to cart"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                        }}
-                        className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
-                      >
-                        <CartIcon />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Buy Now Button */}
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                    className="flex w-full items-center justify-center gap-2 rounded-full bg-orange py-2.5 px-4 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover [&>svg]:h-4 [&>svg]:w-4"
-                  >
-                    <span>Buy Now</span>
-                    <ArrowRightIcon />
-                  </button>
-                </div>
-              </div>
-            </Link>
+            <ProductCard key={p.slug} p={p} />
           ))}
         </div>
       </section>
@@ -414,7 +441,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Trust Badges Strip ───────────────────────────────────────────────── */}
+      {/* ── Trust Badges Strip ──────────────────────────────────────────────── */}
       <section className="mx-auto mt-20 w-full max-w-7xl px-6">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {trustBadges.map((b) => (

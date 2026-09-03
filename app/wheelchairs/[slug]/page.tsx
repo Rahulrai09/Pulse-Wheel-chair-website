@@ -28,8 +28,10 @@ export default function ProductDetailPage({
   const [activeTab, setActiveTab] = useState<"description" | "specifications">("description");
   const [isWishlisted, setIsWishlisted] = useState(false);
 
-  // Thumbnails placeholder array (4 slots)
-  const thumbnails = [product.image, product.image, product.image, product.image];
+  // Real image gallery — falls back to the single main image for products
+  // that don't have extra angles yet
+  const thumbnails =
+    product.images && product.images.length > 0 ? product.images : [product.image];
 
   const handlePrevImage = () => {
     setActiveImageIndex((prev) => (prev === 0 ? thumbnails.length - 1 : prev - 1));
@@ -109,7 +111,7 @@ export default function ProductDetailPage({
               </button>
             </div>
 
-            {/* Thumbnail Row */}
+            {/* Thumbnail Row — only shows as many thumbnails as real images exist */}
             <div className="flex items-center gap-3 justify-center sm:justify-start">
               {thumbnails.map((thumb, idx) => (
                 <button
