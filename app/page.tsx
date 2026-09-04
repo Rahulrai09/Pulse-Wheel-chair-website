@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FeatureIcon from "./components/FeatureIcon";
 import { products, type Product } from "@/lib/products";
+import { useCart } from "@/lib/cart-context";
 
 /* ──────────────────────────────────────────────────
    Pulse Wheelchair — Homepage
@@ -189,6 +191,8 @@ const trustBadges = [
 function ProductCard({ p }: { p: Product }) {
   const images = p.images && p.images.length > 0 ? p.images : [p.image];
   const [activeIndex, setActiveIndex] = useState(0);
+  const { addToCart } = useCart();
+  const router = useRouter();
 
   const handlePrev = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -304,6 +308,7 @@ function ProductCard({ p }: { p: Product }) {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
+                  addToCart(p, 1);
                 }}
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
               >
@@ -318,6 +323,8 @@ function ProductCard({ p }: { p: Product }) {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
+              addToCart(p, 1);
+              router.push("/cart");
             }}
             className="flex w-full items-center justify-center gap-2 rounded-full bg-orange py-2.5 px-4 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover [&>svg]:h-4 [&>svg]:w-4"
           >

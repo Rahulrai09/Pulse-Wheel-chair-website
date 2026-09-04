@@ -1,6 +1,7 @@
 "use client";
 
 import { use } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,6 +10,7 @@ import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import FeatureIcon from "@/app/components/FeatureIcon";
 import { getProductBySlug, products } from "@/lib/products";
+import { useCart } from "@/lib/cart-context";
 
 export default function ProductDetailPage({
   params,
@@ -27,6 +29,8 @@ export default function ProductDetailPage({
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<"description" | "specifications">("description");
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const { addToCart } = useCart();
+  const router = useRouter();
 
   // Real image gallery — falls back to the single main image for products
   // that don't have extra angles yet
@@ -240,12 +244,17 @@ export default function ProductDetailPage({
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 type="button"
+                onClick={() => addToCart(product, quantity)}
                 className="flex-1 rounded-full border-2 border-orange bg-orange/10 py-3.5 px-6 font-bold text-orange shadow-sm transition-colors hover:bg-orange/20 text-center"
               >
                 Add to Cart
               </button>
               <button
                 type="button"
+                onClick={() => {
+                  addToCart(product, quantity);
+                  router.push("/cart");
+                }}
                 className="flex-1 rounded-full bg-orange py-3.5 px-8 font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover text-center"
               >
                 Buy Now
