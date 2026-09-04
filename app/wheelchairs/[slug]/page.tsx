@@ -31,6 +31,7 @@ export default function ProductDetailPage({
   const [isWishlisted, setIsWishlisted] = useState(false);
   const { addToCart } = useCart();
   const router = useRouter();
+  const [justAdded, setJustAdded] = useState(false);
 
   // Real image gallery — falls back to the single main image for products
   // that don't have extra angles yet
@@ -244,10 +245,18 @@ export default function ProductDetailPage({
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 type="button"
-                onClick={() => addToCart(product, quantity)}
-                className="flex-1 rounded-full border-2 border-orange bg-orange/10 py-3.5 px-6 font-bold text-orange shadow-sm transition-colors hover:bg-orange/20 text-center"
+                onClick={() => {
+                  addToCart(product, quantity);
+                  setJustAdded(true);
+                  setTimeout(() => setJustAdded(false), 1500);
+                }}
+                className={`flex-1 rounded-full border-2 py-3.5 px-6 font-bold shadow-sm transition-colors text-center ${
+                  justAdded
+                    ? "border-orange bg-orange text-white"
+                    : "border-orange bg-orange/10 text-orange hover:bg-orange/20"
+                }`}
               >
-                Add to Cart
+                {justAdded ? "Added ✓" : "Add to Cart"}
               </button>
               <button
                 type="button"
