@@ -292,6 +292,7 @@ function ProductCard({ p }: { p: Product }) {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
+                  window.open("https://wa.me/919071101108", "_blank");
                 }}
                 className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
               >
