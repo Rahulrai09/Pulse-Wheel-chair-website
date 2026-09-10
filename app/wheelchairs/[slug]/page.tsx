@@ -1,7 +1,6 @@
 "use client";
 
 import { use } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -29,9 +28,7 @@ export default function ProductDetailPage({
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<"description" | "specifications">("description");
   const [isWishlisted, setIsWishlisted] = useState(false);
-  const { addToCart } = useCart();
-  const router = useRouter();
-  const [justAdded, setJustAdded] = useState(false);
+  const { addToCart, openCart } = useCart();
 
   // Real image gallery — falls back to the single main image for products
   // that don't have extra angles yet
@@ -247,22 +244,17 @@ export default function ProductDetailPage({
                 type="button"
                 onClick={() => {
                   addToCart(product, quantity);
-                  setJustAdded(true);
-                  setTimeout(() => setJustAdded(false), 1500);
+                  openCart();
                 }}
-                className={`flex-1 rounded-full border-2 py-3.5 px-6 font-bold shadow-sm transition-colors text-center ${
-                  justAdded
-                    ? "border-orange bg-orange text-white"
-                    : "border-orange bg-orange/10 text-orange hover:bg-orange/20"
-                }`}
+                className="flex-1 rounded-full border-2 border-orange bg-orange/10 py-3.5 px-6 font-bold text-orange shadow-sm transition-colors hover:bg-orange/20 text-center"
               >
-                {justAdded ? "Added ✓" : "Add to Cart"}
+                Add to Cart
               </button>
               <button
                 type="button"
                 onClick={() => {
                   addToCart(product, quantity);
-                  router.push("/cart");
+                  openCart();
                 }}
                 className="flex-1 rounded-full bg-orange py-3.5 px-8 font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover text-center"
               >

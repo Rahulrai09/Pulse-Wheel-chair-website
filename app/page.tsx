@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "./components/Header";
@@ -191,9 +190,7 @@ const trustBadges = [
 function ProductCard({ p }: { p: Product }) {
   const images = p.images && p.images.length > 0 ? p.images : [p.image];
   const [activeIndex, setActiveIndex] = useState(0);
-  const [justAdded, setJustAdded] = useState(false);
-  const { addToCart } = useCart();
-  const router = useRouter();
+  const { addToCart, openCart } = useCart();
 
   const handlePrev = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -310,18 +307,10 @@ function ProductCard({ p }: { p: Product }) {
                   e.preventDefault();
                   e.stopPropagation();
                   addToCart(p, 1);
-                  setJustAdded(true);
-                  setTimeout(() => setJustAdded(false), 1500);
+                  openCart();
                 }}
-                className={`relative flex h-8 w-8 items-center justify-center rounded-full transition-colors [&>svg]:h-4 [&>svg]:w-4 ${
-                  justAdded ? "bg-orange text-white" : "bg-orange/10 text-orange hover:bg-orange/20"
-                }`}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
               >
-                {justAdded && (
-                  <span className="absolute -top-8 right-0 whitespace-nowrap rounded-full bg-navy px-2.5 py-1 text-[10px] font-bold text-white shadow-md">
-                    Added ✓
-                  </span>
-                )}
                 <CartIcon />
               </button>
             </div>
@@ -334,7 +323,7 @@ function ProductCard({ p }: { p: Product }) {
               e.preventDefault();
               e.stopPropagation();
               addToCart(p, 1);
-              router.push("/cart");
+              openCart();
             }}
             className="flex w-full items-center justify-center gap-2 rounded-full bg-orange py-2.5 px-4 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover [&>svg]:h-4 [&>svg]:w-4"
           >

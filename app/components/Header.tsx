@@ -27,7 +27,7 @@ function XIcon() {
 export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const { totalCount } = useCart();
+  const { totalCount, openCart } = useCart();
 
   const results =
     query.trim() === ""
@@ -84,9 +84,10 @@ export default function Header() {
             </svg>
           </button>
 
-          {/* Cart — now a real link with a live item-count badge */}
-          <Link
-            href="/cart"
+          {/* Cart — opens the slide-in drawer with a live item-count badge */}
+          <button
+            type="button"
+            onClick={openCart}
             aria-label="Cart"
             className="relative flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
           >
@@ -100,7 +101,7 @@ export default function Header() {
                 {totalCount > 9 ? "9+" : totalCount}
               </span>
             )}
-          </Link>
+          </button>
         </div>
       </nav>
 
