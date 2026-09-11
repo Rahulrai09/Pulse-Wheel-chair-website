@@ -17,24 +17,32 @@ export default function CartDrawer() {
   const { items, isOpen, closeCart, removeFromCart, updateQuantity, totalPrice, addToCart } =
     useCart();
 
-  if (!isOpen) return null;
-
   const suggestions = products.filter((p) => !items.some((i) => i.slug === p.slug)).slice(0, 5);
 
   return (
     <>
-      {/* Backdrop */}
-      <div className="fixed inset-0 z-[60] bg-black/40" onClick={closeCart} aria-hidden="true" />
+      {/* Backdrop — fades in/out */}
+      <div
+        className={`fixed inset-0 z-[60] bg-black/40 transition-opacity duration-300 ease-out ${
+          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        onClick={closeCart}
+        aria-hidden="true"
+      />
 
-      {/* Panel */}
-      <div className="fixed right-0 top-0 z-[70] flex h-full w-full max-w-md flex-col bg-offwhite shadow-2xl">
+      {/* Panel — slides in from the right with a soft spring overshoot */}
+      <div
+        className={`fixed right-0 top-0 z-[70] flex h-full w-full max-w-md flex-col bg-offwhite shadow-2xl transition-transform duration-500 [transition-timing-function:cubic-bezier(0.32,1.25,0.4,1)] ${
+          isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-200 bg-white px-5 py-4">
           <button
             type="button"
             onClick={closeCart}
             aria-label="Close cart"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-500 hover:bg-zinc-100"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-500 transition-all duration-300 hover:rotate-90 hover:bg-zinc-100"
           >
             <XIcon />
           </button>
