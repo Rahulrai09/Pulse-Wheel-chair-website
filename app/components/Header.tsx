@@ -26,6 +26,8 @@ function XIcon() {
 
 export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchMounted, setSearchMounted] = useState(false);
+  const [searchVisible, setSearchVisible] = useState(false);
   const [query, setQuery] = useState("");
   const { totalCount, openCart } = useCart();
 
@@ -36,10 +38,22 @@ export default function Header() {
           .filter((p) => p.name.toLowerCase().includes(query.trim().toLowerCase()))
           .slice(0, 6);
 
+  const openSearch = () => {
+    setSearchOpen(true);
+    setSearchMounted(true);
+    // Flip to visible on the next frame so the enter transition actually runs.
+    requestAnimationFrame(() => requestAnimationFrame(() => setSearchVisible(true)));
+  };
+
   const closeSearch = () => {
     setSearchOpen(false);
+    setSearchVisible(false);
     setQuery("");
+    // Keep it mounted just long enough for the exit transition to play.
+    setTimeout(() => setSearchMounted(false), 220);
   };
+
+  const toggleSearch = () => (searchOpen ? closeSearch() : openSearch());
 
   return (
     <header className="relative bg-offwhite text-navy border-b border-slate-200/80">
@@ -66,7 +80,7 @@ export default function Header() {
           <button
             type="button"
             aria-label="Search"
-            onClick={() => setSearchOpen((prev) => !prev)}
+            onClick={toggleSearch}
             className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
           >
             <SearchIcon />
@@ -106,14 +120,20 @@ export default function Header() {
       </nav>
 
       {/* Search overlay */}
-      {searchOpen && (
+      {searchMounted && (
         <>
           <div
-            className="fixed inset-0 z-40 bg-black/20"
+            className={`fixed inset-0 z-40 bg-black/20 transition-opacity duration-200 ease-out ${
+              searchVisible ? "opacity-100" : "opacity-0"
+            }`}
             onClick={closeSearch}
             aria-hidden="true"
           />
-          <div className="absolute left-0 right-0 top-full z-50 border-t border-slate-200 bg-white shadow-lg">
+          <div
+            className={`absolute left-0 right-0 top-full z-50 border-t border-slate-200 bg-white shadow-lg transition-all duration-200 ease-out ${
+              searchVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+            }`}
+          >
             <div className="mx-auto max-w-7xl px-6 py-4">
               <div className="flex items-center gap-3 rounded-full border border-slate-300 bg-offwhite px-4 py-2.5">
                 <SearchIcon />
