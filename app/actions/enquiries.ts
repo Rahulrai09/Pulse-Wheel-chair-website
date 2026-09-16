@@ -32,6 +32,10 @@ export async function submitEnquiry(input: EnquiryInput) {
 
   const supabase = await createClient();
 
+  // Demo requests get their own status lifecycle (pending -> scheduled ->
+  // completed/cancelled); everything else uses new -> contacted -> converted/lost.
+  const initialStatus = input.source === "schedule_demo" ? "pending" : "new";
+
   const { error } = await supabase.from("enquiries").insert({
     name: input.name.trim(),
     email: input.email.trim().toLowerCase(),
@@ -41,7 +45,7 @@ export async function submitEnquiry(input: EnquiryInput) {
     preferred_date: input.preferredDate || null,
     product_slug: input.productSlug || null,
     source: input.source,
-    status: "new",
+    status: initialStatus,
   });
 
   if (error) {
