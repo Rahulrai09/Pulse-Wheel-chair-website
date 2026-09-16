@@ -10,6 +10,7 @@ import {
   Star,
   ShoppingCart,
   Users,
+  MessageSquare,
 } from "lucide-react";
 
 type NavItem = {
@@ -34,6 +35,13 @@ const navGroups: NavGroup[] = [
     items: [
       { label: "Products", href: "/admin/products", icon: Package },
       { label: "Categories", href: "/admin/categories", icon: FolderTree, soon: true },
+    ],
+  },
+  {
+    title: "Customers",
+    items: [
+      { label: "Customers", href: "/admin/customers", icon: Users },
+      { label: "Enquiries", href: "/admin/enquiries", icon: MessageSquare },
     ],
   },
   {

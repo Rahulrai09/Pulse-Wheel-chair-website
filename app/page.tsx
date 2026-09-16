@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import FeatureIcon from "./components/FeatureIcon";
 import { products, type Product } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
+import CallbackButton from "@/components/CallbackButton";
 
 /* ──────────────────────────────────────────────────
    Pulse Wheelchair — Homepage
@@ -431,18 +432,8 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#"
-                className="rounded-full bg-orange px-6 py-3 text-xs font-bold text-white transition-colors hover:bg-orange-hover"
-              >
-                Schedule Demo
-              </a>
-              <a
-                href="#"
-                className="rounded-full border border-navy/20 px-6 py-3 text-xs font-bold text-navy transition-colors hover:bg-navy/5"
-              >
-                Download Catalog
-              </a>
+              <CallbackButton label="Schedule Demo" source="schedule_demo" className="rounded-full bg-orange px-6 py-3 text-xs font-bold text-white transition-colors hover:bg-orange-hover" />
+              <CallbackButton label="Download Catalog" source="download_catalog" className="rounded-full border border-navy/20 px-6 py-3 text-xs font-bold text-navy transition-colors hover:bg-navy/5" />
             </div>
           </div>
         </div>

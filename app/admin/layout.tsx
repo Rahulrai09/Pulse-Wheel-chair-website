@@ -1,19 +1,30 @@
+import { headers } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
+
+const AUTH_PAGES = ["/admin/login", "/admin/forgot-password", "/admin/reset-password"];
 
 export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") ?? "";
+
+  // Login, forgot-password, and reset-password render full-screen with
+  // no sidebar/topbar — including during a password-recovery session,
+  // where a "user" technically exists but shouldn't see the dashboard shell.
+  if (AUTH_PAGES.includes(pathname)) {
+    return <>{children}</>;
+  }
+
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // The /admin/login page renders its own full-screen layout with no
-  // sidebar/topbar, so we skip the shell there.
   if (!user) {
     return <>{children}</>;
   }

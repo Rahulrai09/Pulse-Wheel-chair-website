@@ -1,21 +1,30 @@
 import { createClient } from "@/lib/supabase/server";
-import { Package, Star, ShoppingCart } from "lucide-react";
+import { Package, Star, ShoppingCart, MessageSquare } from "lucide-react";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
 
-  const [{ count: productCount }, { count: reviewCount }, { count: orderCount }] =
-    await Promise.all([
-      supabase.from("products").select("*", { count: "exact", head: true }),
-      supabase
-        .from("reviews")
-        .select("*", { count: "exact", head: true })
-        .eq("approved", false),
-      supabase.from("orders").select("*", { count: "exact", head: true }),
-    ]);
+  const [
+    { count: productCount },
+    { count: newEnquiryCount },
+    { count: reviewCount },
+    { count: orderCount },
+  ] = await Promise.all([
+    supabase.from("products").select("*", { count: "exact", head: true }),
+    supabase
+      .from("enquiries")
+      .select("*", { count: "exact", head: true })
+      .eq("status", "new"),
+    supabase
+      .from("reviews")
+      .select("*", { count: "exact", head: true })
+      .eq("approved", false),
+    supabase.from("orders").select("*", { count: "exact", head: true }),
+  ]);
 
   const stats = [
     { label: "Products", value: productCount ?? 0, icon: Package },
+    { label: "New enquiries", value: newEnquiryCount ?? 0, icon: MessageSquare },
     { label: "Reviews awaiting approval", value: reviewCount ?? 0, icon: Star },
     { label: "Orders", value: orderCount ?? 0, icon: ShoppingCart },
   ];
@@ -32,7 +41,7 @@ export default async function DashboardPage() {
         Overview of your Pulse Mobility & Care store.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (

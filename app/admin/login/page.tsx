@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, Suspense } from "react";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Activity, Loader2 } from "lucide-react";
@@ -9,6 +10,7 @@ function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const notAuthorized = searchParams.get("error") === "not-authorized";
+  const resetSuccess = searchParams.get("reset") === "success";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -61,6 +63,11 @@ function LoginForm() {
               That account isn&apos;t authorized for admin access.
             </div>
           )}
+          {resetSuccess && (
+            <div className="text-sm text-green-700 bg-green-50 border border-green-200 rounded-lg px-3 py-2">
+              Password updated. Sign in with your new password.
+            </div>
+          )}
           {error && (
             <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
               {error}
@@ -82,9 +89,17 @@ function LoginForm() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-[#1B355E] mb-1">
-              Password
-            </label>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-sm font-medium text-[#1B355E]">
+                Password
+              </label>
+              <Link
+                href="/admin/forgot-password"
+                className="text-xs font-medium text-[#1B355E] hover:text-[#EE8B1B] transition-colors"
+              >
+                Forgot password?
+              </Link>
+            </div>
             <input
               type="password"
               required

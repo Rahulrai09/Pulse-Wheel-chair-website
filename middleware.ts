@@ -1,8 +1,11 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
+const AUTH_PAGES = ["/admin/login", "/admin/forgot-password", "/admin/reset-password"];
+
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request });
+  response.headers.set("x-pathname", request.nextUrl.pathname);
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -17,6 +20,7 @@ export async function middleware(request: NextRequest) {
             request.cookies.set(name, value)
           );
           response = NextResponse.next({ request });
+          response.headers.set("x-pathname", request.nextUrl.pathname);
           cookiesToSet.forEach(({ name, value, options }) =>
             response.cookies.set(name, value, options)
           );
@@ -30,9 +34,9 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const isAdminRoute = request.nextUrl.pathname.startsWith("/admin");
-  const isLoginRoute = request.nextUrl.pathname.startsWith("/admin/login");
+  const isAuthPage = AUTH_PAGES.includes(request.nextUrl.pathname);
 
-  if (isAdminRoute && !isLoginRoute) {
+  if (isAdminRoute && !isAuthPage) {
     if (!user) {
       return NextResponse.redirect(new URL("/admin/login", request.url));
     }
@@ -51,7 +55,10 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  if (isLoginRoute && user) {
+  // Only the login page redirects away an already-logged-in user.
+  // forgot-password/reset-password stay accessible even mid-session
+  // (a password recovery link creates a temporary session).
+  if (request.nextUrl.pathname === "/admin/login" && user) {
     return NextResponse.redirect(new URL("/admin/dashboard", request.url));
   }
 
