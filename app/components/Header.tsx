@@ -26,8 +26,6 @@ function XIcon() {
 
 export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
-  const [searchMounted, setSearchMounted] = useState(false);
-  const [searchVisible, setSearchVisible] = useState(false);
   const [query, setQuery] = useState("");
   const { totalCount, openCart } = useCart();
 
@@ -38,22 +36,12 @@ export default function Header() {
           .filter((p) => p.name.toLowerCase().includes(query.trim().toLowerCase()))
           .slice(0, 6);
 
-  const openSearch = () => {
-    setSearchOpen(true);
-    setSearchMounted(true);
-    // Flip to visible on the next frame so the enter transition actually runs.
-    requestAnimationFrame(() => requestAnimationFrame(() => setSearchVisible(true)));
-  };
-
   const closeSearch = () => {
     setSearchOpen(false);
-    setSearchVisible(false);
     setQuery("");
-    // Keep it mounted just long enough for the exit transition to play.
-    setTimeout(() => setSearchMounted(false), 220);
   };
 
-  const toggleSearch = () => (searchOpen ? closeSearch() : openSearch());
+  const toggleSearch = () => setSearchOpen((prev) => !prev);
 
   return (
     <header className="relative bg-offwhite text-navy border-b border-slate-200/80">
@@ -76,15 +64,70 @@ export default function Header() {
 
         {/* Right — icon buttons */}
         <div className="flex items-center gap-3">
-          {/* Search */}
-          <button
-            type="button"
-            aria-label="Search"
-            onClick={toggleSearch}
-            className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
-          >
-            <SearchIcon />
-          </button>
+          {/* Search — expands inline to the left of the icon, doesn't push the layout */}
+          <div className="relative flex items-center">
+            <div
+              className={`absolute right-full top-1/2 mr-2 -translate-y-1/2 overflow-hidden transition-all duration-300 ease-out ${
+                searchOpen ? "w-64 max-w-[70vw] opacity-100" : "w-0 opacity-0"
+              }`}
+            >
+              <div className="flex items-center gap-2 rounded-full border border-slate-300 bg-white px-3 py-2 shadow-sm">
+                <SearchIcon />
+                <input
+                  autoFocus={searchOpen}
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search wheelchairs..."
+                  className="w-full bg-transparent text-sm text-navy placeholder:text-zinc-400 focus:outline-none"
+                />
+              </div>
+
+              {query.trim() !== "" && (
+                <div className="absolute left-0 right-0 top-full mt-2 max-h-80 overflow-y-auto rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
+                  {results.length > 0 ? (
+                    <ul className="divide-y divide-slate-100">
+                      {results.map((p) => (
+                        <li key={p.slug}>
+                          <Link
+                            href={`/wheelchairs/${p.slug}`}
+                            onClick={closeSearch}
+                            className="flex items-center gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-offwhite"
+                          >
+                            <div className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-lg bg-gradient-to-b from-[#E2EDF7] to-[#F8FBFE]">
+                              <Image
+                                src={p.images && p.images.length > 0 ? p.images[0] : p.image}
+                                alt={p.alt}
+                                fill
+                                className="object-contain p-1"
+                              />
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <p className="truncate text-xs font-semibold text-navy">{p.name}</p>
+                              <p className="text-[11px] text-zinc-500">{p.price}</p>
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="py-4 text-center text-xs text-zinc-400">
+                      No wheelchairs found for &ldquo;{query}&rdquo;
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <button
+              type="button"
+              aria-label={searchOpen ? "Close search" : "Search"}
+              onClick={toggleSearch}
+              className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
+            >
+              {searchOpen ? <XIcon /> : <SearchIcon />}
+            </button>
+          </div>
 
           {/* Account — routes to /account; middleware sends signed-out visitors to /account/login */}
           <Link
@@ -118,81 +161,6 @@ export default function Header() {
           </button>
         </div>
       </nav>
-
-      {/* Search overlay */}
-      {searchMounted && (
-        <>
-          <div
-            className={`fixed inset-0 z-40 bg-black/20 transition-opacity duration-200 ease-out ${
-              searchVisible ? "opacity-100" : "opacity-0"
-            }`}
-            onClick={closeSearch}
-            aria-hidden="true"
-          />
-          <div
-            className={`absolute left-0 right-0 top-full z-50 border-t border-slate-200 bg-white shadow-lg transition-all duration-200 ease-out ${
-              searchVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
-            }`}
-          >
-            <div className="mx-auto max-w-7xl px-6 py-4">
-              <div className="flex items-center gap-3 rounded-full border border-slate-300 bg-offwhite px-4 py-2.5">
-                <SearchIcon />
-                <input
-                  autoFocus
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search wheelchairs..."
-                  className="flex-1 bg-transparent text-sm text-navy placeholder:text-zinc-400 focus:outline-none"
-                />
-                <button
-                  type="button"
-                  onClick={closeSearch}
-                  aria-label="Close search"
-                  className="text-zinc-400 hover:text-navy"
-                >
-                  <XIcon />
-                </button>
-              </div>
-
-              {query.trim() !== "" && (
-                <div className="mt-4 max-h-80 overflow-y-auto">
-                  {results.length > 0 ? (
-                    <ul className="divide-y divide-slate-100">
-                      {results.map((p) => (
-                        <li key={p.slug}>
-                          <Link
-                            href={`/wheelchairs/${p.slug}`}
-                            onClick={closeSearch}
-                            className="flex items-center gap-4 rounded-xl px-2 py-3 transition-colors hover:bg-offwhite"
-                          >
-                            <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg bg-gradient-to-b from-[#E2EDF7] to-[#F8FBFE]">
-                              <Image
-                                src={p.images && p.images.length > 0 ? p.images[0] : p.image}
-                                alt={p.alt}
-                                fill
-                                className="object-contain p-1"
-                              />
-                            </div>
-                            <div className="min-w-0 flex-1">
-                              <p className="truncate text-sm font-semibold text-navy">{p.name}</p>
-                              <p className="text-xs text-zinc-500">{p.price}</p>
-                            </div>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="py-6 text-center text-sm text-zinc-400">
-                      No wheelchairs found for &ldquo;{query}&rdquo;
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </>
-      )}
     </header>
   );
 }
