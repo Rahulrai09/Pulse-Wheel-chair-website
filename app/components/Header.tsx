@@ -72,9 +72,9 @@ export default function Header() {
             <SearchIcon />
           </button>
 
-          {/* Account */}
-          <button
-            type="button"
+          {/* Account — routes to /account; middleware sends signed-out visitors to /account/login */}
+          <Link
+            href="/account"
             aria-label="Account"
             className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
           >
@@ -82,7 +82,7 @@ export default function Header() {
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
             </svg>
-          </button>
+          </Link>
 
           {/* Cart — opens the slide-in drawer with a live item-count badge */}
           <button

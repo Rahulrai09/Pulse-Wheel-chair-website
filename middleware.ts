@@ -1,7 +1,13 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const AUTH_PAGES = ["/admin/login", "/admin/forgot-password", "/admin/reset-password"];
+const ADMIN_AUTH_PAGES = ["/admin/login", "/admin/forgot-password", "/admin/reset-password"];
+const ACCOUNT_AUTH_PAGES = [
+  "/account/login",
+  "/account/signup",
+  "/account/forgot-password",
+  "/account/reset-password",
+];
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request });
@@ -33,10 +39,14 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isAdminRoute = request.nextUrl.pathname.startsWith("/admin");
-  const isAuthPage = AUTH_PAGES.includes(request.nextUrl.pathname);
+  const pathname = request.nextUrl.pathname;
+  const isAdminRoute = pathname.startsWith("/admin");
+  const isAdminAuthPage = ADMIN_AUTH_PAGES.includes(pathname);
+  const isAccountRoute = pathname.startsWith("/account");
+  const isAccountAuthPage = ACCOUNT_AUTH_PAGES.includes(pathname);
 
-  if (isAdminRoute && !isAuthPage) {
+  // --- Admin routes ---
+  if (isAdminRoute && !isAdminAuthPage) {
     if (!user) {
       return NextResponse.redirect(new URL("/admin/login", request.url));
     }
@@ -55,16 +65,27 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Only the login page redirects away an already-logged-in user.
-  // forgot-password/reset-password stay accessible even mid-session
-  // (a password recovery link creates a temporary session).
-  if (request.nextUrl.pathname === "/admin/login" && user) {
+  if (pathname === "/admin/login" && user) {
     return NextResponse.redirect(new URL("/admin/dashboard", request.url));
+  }
+
+  // --- Customer account routes ---
+  if (isAccountRoute && !isAccountAuthPage) {
+    if (!user) {
+      return NextResponse.redirect(new URL("/account/login", request.url));
+    }
+  }
+
+  // Already-signed-in customers don't need the login/signup screens again.
+  // (forgot-password/reset-password stay accessible even mid-session, since
+  // a password recovery link creates its own temporary session.)
+  if ((pathname === "/account/login" || pathname === "/account/signup") && user) {
+    return NextResponse.redirect(new URL("/account", request.url));
   }
 
   return response;
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/account/:path*"],
 };
