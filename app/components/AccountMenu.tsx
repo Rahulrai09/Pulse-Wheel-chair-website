@@ -42,7 +42,7 @@ export default function AccountMenu() {
         type="button"
         aria-label="Account"
         onClick={() => setOpen((prev) => !prev)}
-        className="flex h-9 w-9 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
+        className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
       >
         <AccountIcon />
       </button>
