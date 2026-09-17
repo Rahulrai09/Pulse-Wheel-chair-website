@@ -30,23 +30,19 @@ export default async function AccountPage() {
     redirect("/account/login");
   }
 
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("full_name")
-    .eq("id", user.id)
-    .single();
-
-  const { data: orders } = await supabase
-    .from("orders")
-    .select("id, status, total, currency, created_at, order_items(id, product_name, quantity, unit_price)")
-    .eq("user_id", user.id)
-    .order("created_at", { ascending: false });
-
-  const { data: wishlistRows } = await supabase
-    .from("wishlist_items")
-    .select("product_slug")
-    .eq("user_id", user.id)
-    .order("created_at", { ascending: false });
+  const [{ data: profile }, { data: orders }, { data: wishlistRows }] = await Promise.all([
+    supabase.from("profiles").select("full_name").eq("id", user.id).single(),
+    supabase
+      .from("orders")
+      .select("id, status, total, currency, created_at, order_items(id, product_name, quantity, unit_price)")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("wishlist_items")
+      .select("product_slug")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false }),
+  ]);
 
   const wishlist: WishlistProduct[] = (wishlistRows ?? [])
     .map((row) => getProductBySlug(row.product_slug))

@@ -54,7 +54,7 @@ export default function Header() {
         {/* Logo — image */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/pulse-logo.png"
+            src="/pulse-logo.webp"
             alt="Pulse Mobility & Care"
             width={160}
             height={40}
@@ -100,6 +100,7 @@ export default function Header() {
                                 src={p.images && p.images.length > 0 ? p.images[0] : p.image}
                                 alt={p.alt}
                                 fill
+                                sizes="40px"
                                 className="object-contain p-1"
                               />
                             </div>

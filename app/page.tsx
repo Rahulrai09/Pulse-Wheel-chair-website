@@ -350,7 +350,7 @@ export default function Home() {
       {/* ── Hero banner ─────────────────────────────────────────────────────── */}
       <section className="relative w-full overflow-hidden" style={{ aspectRatio: "1800/720" }}>
         <Image
-          src="/hero-banner.jpg"
+          src="/hero-banner.webp"
           alt="Pulse Wheelchair Hero Banner"
           fill
           priority

@@ -244,7 +244,13 @@ export default function AccountManager({
                   </button>
                   <Link href={`/wheelchairs/${p.slug}`} className="block">
                     <div className="relative mb-2 aspect-square overflow-hidden rounded-lg bg-gradient-to-b from-[#E2EDF7] to-[#F8FBFE]">
-                      <Image src={p.image} alt={p.name} fill className="object-contain p-3" />
+                      <Image
+                      src={p.image}
+                      alt={p.name}
+                      fill
+                      sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 20vw"
+                      className="object-contain p-3"
+                    />
                     </div>
                     <p className="line-clamp-2 text-sm font-medium text-navy">{p.name}</p>
                     <p className="text-sm font-semibold text-orange">{p.price}</p>

@@ -73,7 +73,7 @@ export default function CartDrawer() {
                     className="flex items-center gap-3 rounded-2xl border border-slate-200/60 bg-white p-3 shadow-sm"
                   >
                     <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-b from-[#E2EDF7] to-[#F8FBFE]">
-                      <Image src={item.image} alt={item.name} fill className="object-contain p-1.5" />
+                      <Image src={item.image} alt={item.name} fill sizes="64px" className="object-contain p-1.5" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <Link
@@ -133,6 +133,7 @@ export default function CartDrawer() {
                             src={p.images && p.images.length > 0 ? p.images[0] : p.image}
                             alt={p.alt}
                             fill
+                            sizes="128px"
                             className="object-contain p-1.5"
                           />
                         </div>

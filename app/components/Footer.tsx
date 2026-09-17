@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="flex flex-col items-start leading-none gap-1">
               <Image
-                src="/pulse-logo-white.png"
+                src="/pulse-logo-white.webp"
                 alt="Pulse Mobility & Care"
                 width={220}
                 height={56}

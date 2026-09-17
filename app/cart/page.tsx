@@ -36,7 +36,7 @@ export default function CartPage() {
                   className="flex items-center gap-4 rounded-2xl bg-white p-4 shadow-sm border border-slate-200/60"
                 >
                   <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-b from-[#E2EDF7] to-[#F8FBFE]">
-                    <Image src={item.image} alt={item.name} fill className="object-contain p-2" />
+                    <Image src={item.image} alt={item.name} fill sizes="80px" className="object-contain p-2" />
                   </div>
 
                   <div className="min-w-0 flex-1">
