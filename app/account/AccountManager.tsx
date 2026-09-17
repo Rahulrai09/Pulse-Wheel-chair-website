@@ -84,7 +84,9 @@ export default function AccountManager({
         </Link>
 
         <div className="mb-8 flex items-center justify-between">
-          <h1 className="text-2xl font-semibold text-navy">My Account</h1>
+          <h1 className="text-2xl font-semibold text-navy">
+            My Account{fullName ? `: ${fullName}` : ""}
+          </h1>
           <form action={signOutAction}>
             <button
               type="submit"

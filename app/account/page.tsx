@@ -1,6 +1,8 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getProductBySlug } from "@/lib/products";
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 import AccountManager, { type WishlistProduct } from "./AccountManager";
 
 export type OrderRecord = {
@@ -52,11 +54,15 @@ export default async function AccountPage() {
     .map((p) => ({ slug: p.slug, name: p.name, image: p.image, price: p.price }));
 
   return (
-    <AccountManager
-      email={user.email ?? ""}
-      fullName={profile?.full_name ?? ""}
-      orders={(orders as OrderRecord[]) ?? []}
-      wishlist={wishlist}
-    />
+    <>
+      <Header />
+      <AccountManager
+        email={user.email ?? ""}
+        fullName={profile?.full_name ?? ""}
+        orders={(orders as OrderRecord[]) ?? []}
+        wishlist={wishlist}
+      />
+      <Footer />
+    </>
   );
 }
