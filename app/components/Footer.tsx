@@ -12,9 +12,9 @@ export default function Footer() {
               <Image
                 src="/pulse-logo-white.png"
                 alt="Pulse Mobility & Care"
-                width={160}
-                height={40}
-                className="h-10 w-auto object-contain"
+                width={220}
+                height={56}
+                className="h-14 w-auto object-contain"
               />
               <span className="text-[0.55rem] font-medium uppercase tracking-[0.25em] text-white/50">
                 Mobility &amp; Care
