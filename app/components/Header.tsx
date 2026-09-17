@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TrustTicker from "./TrustTicker";
+import AccountMenu from "./AccountMenu";
 import { products } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
 
@@ -129,17 +130,8 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Account — routes to /account; middleware sends signed-out visitors to /account/login */}
-          <Link
-            href="/account"
-            aria-label="Account"
-            className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-          </Link>
+          {/* Account — Myntra-style hover dropdown; login/signup opens as a modal, no navigation */}
+          <AccountMenu />
 
           {/* Cart — opens the slide-in drawer with a live item-count badge */}
           <button

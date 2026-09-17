@@ -10,6 +10,7 @@ import Footer from "@/app/components/Footer";
 import FeatureIcon from "@/app/components/FeatureIcon";
 import { getProductBySlug, products } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
+import WishlistButton from "@/app/components/WishlistButton";
 
 export default function ProductDetailPage({
   params,
@@ -27,7 +28,6 @@ export default function ProductDetailPage({
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<"description" | "specifications">("description");
-  const [isWishlisted, setIsWishlisted] = useState(false);
   const { addToCart, openCart } = useCart();
 
   // Real image gallery — falls back to the single main image for products
@@ -204,26 +204,7 @@ export default function ProductDetailPage({
               </div>
 
               {/* Wishlist Heart Button */}
-              <button
-                type="button"
-                onClick={() => setIsWishlisted(!isWishlisted)}
-                aria-label="Add to wishlist"
-                className={`flex h-11 w-11 items-center justify-center rounded-full border transition-all ${
-                  isWishlisted
-                    ? "border-orange bg-orange/10 text-orange"
-                    : "border-slate-300 bg-white text-zinc-600 hover:border-orange hover:text-orange"
-                }`}
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill={isWishlisted ? "currentColor" : "none"}
-                  stroke="currentColor"
-                  strokeWidth={1.8}
-                  className="h-5 w-5"
-                >
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
-              </button>
+              <WishlistButton productSlug={product.slug} />
 
               {/* Call / WhatsApp Button */}
               <button

@@ -2,9 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Loader2, Package, LogOut, ArrowLeft } from "lucide-react";
+import Image from "next/image";
+import { Loader2, Package, LogOut, ArrowLeft, Heart } from "lucide-react";
 import { updateProfile, signOutAction } from "./actions";
+import { removeFromWishlist } from "./wishlist-actions";
 import type { OrderRecord } from "./page";
+
+export type WishlistProduct = {
+  slug: string;
+  name: string;
+  image: string;
+  price: string;
+};
 
 const STATUS_STYLES: Record<string, string> = {
   created: "bg-blue-50 text-blue-700 border-blue-200",
@@ -27,16 +36,24 @@ export default function AccountManager({
   email,
   fullName: initialFullName,
   orders,
+  wishlist,
 }: {
   email: string;
   fullName: string;
   orders: OrderRecord[];
+  wishlist: WishlistProduct[];
 }) {
   const [fullName, setFullName] = useState(initialFullName);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
   const [signingOut, setSigningOut] = useState(false);
+  const [wishlistItems, setWishlistItems] = useState(wishlist);
+
+  async function handleRemoveFromWishlist(slug: string) {
+    setWishlistItems((prev) => prev.filter((p) => p.slug !== slug));
+    await removeFromWishlist(slug);
+  }
 
   async function handleSaveProfile(e: React.FormEvent) {
     e.preventDefault();
@@ -192,6 +209,48 @@ export default function AccountManager({
               )}
             </div>
           </div>
+        </div>
+
+        {/* Wishlist */}
+        <div id="wishlist" className="mt-6 scroll-mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="mb-4 text-lg font-semibold text-navy">Wishlist</h2>
+
+          {wishlistItems.length === 0 ? (
+            <div className="flex flex-col items-center gap-2 py-12 text-center">
+              <Heart className="h-8 w-8 text-slate-300" />
+              <p className="text-sm text-warm-gray">Nothing saved to your wishlist yet.</p>
+              <Link href="/wheelchairs" className="mt-2 text-sm font-medium text-navy hover:text-orange">
+                Browse wheelchairs →
+              </Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              {wishlistItems.map((p) => (
+                <div
+                  key={p.slug}
+                  className="group relative rounded-xl border border-slate-100 p-3 transition hover:border-slate-200"
+                >
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveFromWishlist(p.slug)}
+                    aria-label="Remove from wishlist"
+                    className="absolute right-2 top-2 z-10 flex h-7 w-7 items-center justify-center rounded-full bg-white text-slate-400 shadow transition hover:text-red-500"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                    </svg>
+                  </button>
+                  <Link href={`/wheelchairs/${p.slug}`} className="block">
+                    <div className="relative mb-2 aspect-square overflow-hidden rounded-lg bg-gradient-to-b from-[#E2EDF7] to-[#F8FBFE]">
+                      <Image src={p.image} alt={p.name} fill className="object-contain p-3" />
+                    </div>
+                    <p className="line-clamp-2 text-sm font-medium text-navy">{p.name}</p>
+                    <p className="text-sm font-semibold text-orange">{p.price}</p>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import AccountManager from "./AccountManager";
+import { getProductBySlug } from "@/lib/products";
+import AccountManager, { type WishlistProduct } from "./AccountManager";
 
 export type OrderRecord = {
   id: string;
@@ -39,11 +40,23 @@ export default async function AccountPage() {
     .eq("user_id", user.id)
     .order("created_at", { ascending: false });
 
+  const { data: wishlistRows } = await supabase
+    .from("wishlist_items")
+    .select("product_slug")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false });
+
+  const wishlist: WishlistProduct[] = (wishlistRows ?? [])
+    .map((row) => getProductBySlug(row.product_slug))
+    .filter((p): p is NonNullable<typeof p> => !!p)
+    .map((p) => ({ slug: p.slug, name: p.name, image: p.image, price: p.price }));
+
   return (
     <AccountManager
       email={user.email ?? ""}
       fullName={profile?.full_name ?? ""}
       orders={(orders as OrderRecord[]) ?? []}
+      wishlist={wishlist}
     />
   );
 }
