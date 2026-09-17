@@ -50,7 +50,7 @@ export default function Header() {
       <TrustTicker />
 
       {/* Main nav */}
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-1">
         {/* Logo — image */}
         <Link href="/" className="flex items-center">
           <Image
@@ -58,7 +58,7 @@ export default function Header() {
             alt="Pulse Mobility & Care"
             width={160}
             height={40}
-            className="h-10 w-auto object-contain"
+            className="h-8 w-auto object-contain"
             priority
           />
         </Link>
@@ -124,7 +124,7 @@ export default function Header() {
               type="button"
               aria-label={searchOpen ? "Close search" : "Search"}
               onClick={toggleSearch}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
+              className="flex h-9 w-9 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
             >
               {searchOpen ? <XIcon /> : <SearchIcon />}
             </button>
@@ -138,7 +138,7 @@ export default function Header() {
             type="button"
             onClick={openCart}
             aria-label="Cart"
-            className="relative flex h-10 w-10 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
+            className="relative flex h-9 w-9 items-center justify-center rounded-full text-navy transition-colors hover:bg-navy/5 hover:text-orange"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-5 w-5">
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
