@@ -9,7 +9,7 @@ const SLIDES = [
 ];
 
 const INTERVAL_MS = 6000;
-const FADE_MS = 1000;
+const FADE_MS = 1800;
 
 export default function HeroCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
