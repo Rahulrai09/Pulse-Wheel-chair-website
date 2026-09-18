@@ -6,6 +6,7 @@ import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FeatureIcon from "./components/FeatureIcon";
+import HeroCarousel from "./components/HeroCarousel";
 import { products, type Product } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
 import CallbackButton from "@/components/CallbackButton";
@@ -347,16 +348,8 @@ export default function Home() {
       {/* Header */}
       <Header />
 
-      {/* ── Hero banner ─────────────────────────────────────────────────────── */}
-      <section className="relative w-full overflow-hidden" style={{ aspectRatio: "1800/720" }}>
-        <Image
-          src="/hero-banner.webp"
-          alt="Pulse Wheelchair Hero Banner"
-          fill
-          priority
-          className="object-cover"
-        />
-      </section>
+      {/* ── Hero banner — auto-rotating carousel ────────────────────────────── */}
+      <HeroCarousel />
 
       {/* ── Category cards ──────────────────────────────────────────────────── */}
       <section className="mt-14 mx-auto w-full max-w-6xl px-6">
