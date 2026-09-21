@@ -212,7 +212,7 @@ function ProductCard({ p }: { p: Product }) {
       className="group flex flex-col overflow-hidden rounded-[26px] bg-[#EEF4F8]/80 p-2.5 shadow-sm transition-shadow hover:shadow-md border border-slate-200/60"
     >
       {/* Top Image area with soft gradient */}
-      <div className="relative z-10 h-52 sm:h-56 w-full rounded-[20px] bg-gradient-to-b from-[#E2EDF7] via-[#EEF5FC] to-[#F8FBFE] flex items-center justify-center p-3 pb-6">
+      <div className="relative z-10 h-32 sm:h-56 w-full rounded-[20px] bg-gradient-to-b from-[#E2EDF7] via-[#EEF5FC] to-[#F8FBFE] flex items-center justify-center p-3 pb-6">
         {/* Chevron buttons */}
         <button
           type="button"
@@ -244,7 +244,7 @@ function ProductCard({ p }: { p: Product }) {
       </div>
 
       {/* White rounded panel overlapping the top image */}
-      <div className="relative z-20 -mt-8 flex flex-1 flex-col justify-between rounded-[22px] bg-white p-4 sm:p-5 shadow-sm">
+      <div className="relative z-20 -mt-8 flex flex-1 flex-col justify-between rounded-[22px] bg-white p-3 sm:p-5 shadow-sm">
         {/* Pagination Dots — one per image, active one highlighted */}
         <div className="mb-3 flex items-center justify-center gap-1.5">
           {images.map((_, idx) => (
@@ -261,10 +261,10 @@ function ProductCard({ p }: { p: Product }) {
 
         {/* Title & Description */}
         <div>
-          <h3 className="font-serif text-lg sm:text-xl font-semibold leading-tight text-navy mb-2 group-hover:text-orange transition-colors">
+          <h3 className="font-serif text-sm sm:text-xl font-semibold leading-tight text-navy mb-2 group-hover:text-orange transition-colors line-clamp-2">
             {p.name}
           </h3>
-          <p className="text-xs sm:text-[13px] text-zinc-500 leading-relaxed mb-4">
+          <p className="text-xs sm:text-[13px] text-zinc-500 leading-relaxed mb-4 line-clamp-2">
             {p.description}
           </p>
 
@@ -272,7 +272,7 @@ function ProductCard({ p }: { p: Product }) {
           <div className="mb-4 grid grid-cols-4 gap-1 text-center">
             {p.features.map((f, idx) => (
               <div key={idx} className="flex flex-col items-center">
-                <div className="mb-1 flex h-7.5 w-7.5 items-center justify-center rounded-full bg-orange/10 text-orange [&>svg]:h-3.5 [&>svg]:w-3.5">
+                <div className="mb-1 flex h-6 w-6 sm:h-7.5 sm:w-7.5 items-center justify-center rounded-full bg-orange/10 text-orange [&>svg]:h-3 [&>svg]:w-3 sm:[&>svg]:h-3.5 sm:[&>svg]:w-3.5">
                   <FeatureIcon iconKey={f.iconKey} />
                 </div>
                 <span className="text-[9px] sm:text-[9.5px] font-medium leading-tight text-zinc-600 text-center break-words min-h-[1.75rem] flex items-center justify-center">
@@ -286,10 +286,10 @@ function ProductCard({ p }: { p: Product }) {
         {/* Price & Actions Row */}
         <div>
           <div className="mb-4 flex items-center justify-between">
-            <span className="font-sans text-lg sm:text-xl font-extrabold text-navy">
+            <span className="font-sans text-base sm:text-xl font-extrabold text-navy">
               {p.price}
             </span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <button
                 type="button"
                 aria-label="Call specialist"
@@ -298,7 +298,7 @@ function ProductCard({ p }: { p: Product }) {
                   e.stopPropagation();
                   window.open("https://wa.me/919071101108", "_blank");
                 }}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
+                className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-3.5 [&>svg]:w-3.5 sm:[&>svg]:h-4 sm:[&>svg]:w-4"
               >
                 <PhoneIcon />
               </button>
@@ -311,7 +311,7 @@ function ProductCard({ p }: { p: Product }) {
                   addToCart(p, 1);
                   openCart();
                 }}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-4 [&>svg]:w-4"
+                className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-orange/10 text-orange transition-colors hover:bg-orange/20 [&>svg]:h-3.5 [&>svg]:w-3.5 sm:[&>svg]:h-4 sm:[&>svg]:w-4"
               >
                 <CartIcon />
               </button>
@@ -327,7 +327,7 @@ function ProductCard({ p }: { p: Product }) {
               addToCart(p, 1);
               openCart();
             }}
-            className="flex w-full items-center justify-center gap-2 rounded-full bg-orange py-2.5 px-4 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover [&>svg]:h-4 [&>svg]:w-4"
+            className="flex w-full items-center justify-center gap-1.5 sm:gap-2 rounded-full bg-orange py-2 sm:py-2.5 px-4 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange/20 transition-colors hover:bg-orange-hover [&>svg]:h-3.5 [&>svg]:w-3.5 sm:[&>svg]:h-4 sm:[&>svg]:w-4"
           >
             <span>Buy Now</span>
             <ArrowRightIcon />
@@ -352,17 +352,17 @@ export default function Home() {
       <HeroCarousel />
 
       {/* ── Category cards ──────────────────────────────────────────────────── */}
-      <section className="mt-14 mx-auto w-full max-w-6xl px-6">
-        <div className="rounded-2xl bg-white p-8 shadow-xl shadow-navy/5">
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
+      <section className="mt-20 sm:mt-14 mx-auto w-full max-w-6xl px-6">
+        <div className="rounded-2xl bg-white p-4 sm:p-8 shadow-xl shadow-navy/5">
+          <div className="flex gap-4 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 lg:grid-cols-6">
             {categories.map((c) => (
               <a
                 key={c.label}
                 href="#"
-                className="group flex flex-col items-center text-center transition-transform hover:-translate-y-1"
+                className="group flex w-16 flex-shrink-0 flex-col items-center text-center transition-transform hover:-translate-y-1 sm:w-auto"
               >
                 <CategoryIcon>{c.icon}</CategoryIcon>
-                <span className="text-sm font-medium text-navy group-hover:text-orange transition-colors">
+                <span className="text-[11px] leading-tight font-medium text-navy group-hover:text-orange transition-colors sm:text-sm">
                   {c.label}
                 </span>
               </a>
@@ -377,7 +377,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold tracking-tight">Best Wheelchairs</h2>
         </div>
 
-        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-3 sm:gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
           {products.map((p) => (
             <ProductCard key={p.slug} p={p} />
           ))}
