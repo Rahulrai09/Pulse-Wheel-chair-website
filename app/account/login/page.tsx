@@ -4,13 +4,12 @@ import { useState, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { Loader2 } from "lucide-react";
+import { Activity, Loader2 } from "lucide-react";
 
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const resetSuccess = searchParams.get("reset") === "success";
-  const justSignedUp = searchParams.get("signup") === "success";
+  const redirectTo = searchParams.get("redirect") || "/account/orders";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,35 +34,29 @@ function LoginForm() {
       return;
     }
 
-    router.push("/account");
+    router.push(redirectTo);
     router.refresh();
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-offwhite px-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#F1F2F4] px-4">
       <div className="w-full max-w-sm">
         <div className="flex flex-col items-center mb-8">
-          <Link href="/" className="mb-4">
-            <span className="text-lg font-bold text-navy">Pulse Mobility &amp; Care</span>
-          </Link>
-          <h1 className="text-2xl font-semibold text-navy">Sign in</h1>
-          <p className="mt-1 text-sm text-warm-gray">Access your account and order history</p>
+          <div className="w-12 h-12 rounded-full bg-[#1B355E] flex items-center justify-center mb-3">
+            <Activity className="w-6 h-6 text-[#EE8B1B]" strokeWidth={2.5} />
+          </div>
+          <h1
+            className="text-2xl font-semibold text-[#1B355E] tracking-wide"
+            style={{ fontFamily: "var(--font-fraunces, serif)" }}
+          >
+            Sign In
+          </h1>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4"
+          className="bg-white rounded-xl border border-[#E4E7EC] shadow-sm p-6 space-y-4"
         >
-          {resetSuccess && (
-            <div className="text-sm text-green-700 bg-green-50 border border-green-200 rounded-lg px-3 py-2">
-              Password updated. Sign in with your new password.
-            </div>
-          )}
-          {justSignedUp && (
-            <div className="text-sm text-green-700 bg-green-50 border border-green-200 rounded-lg px-3 py-2">
-              Account created — sign in to continue.
-            </div>
-          )}
           {error && (
             <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
               {error}
@@ -71,49 +64,46 @@ function LoginForm() {
           )}
 
           <div>
-            <label className="block text-sm font-medium text-navy mb-1">Email</label>
+            <label className="block text-sm font-medium text-[#1B355E] mb-1">
+              Email
+            </label>
             <input
-              type="email"
               required
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy/20 focus:border-navy"
-              placeholder="you@example.com"
+              className="w-full rounded-lg border border-[#E4E7EC] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1B355E]/20 focus:border-[#1B355E]"
             />
           </div>
 
           <div>
-            <div className="flex items-center justify-between mb-1">
-              <label className="block text-sm font-medium text-navy">Password</label>
-              <Link
-                href="/account/forgot-password"
-                className="text-xs font-medium text-navy hover:text-orange transition-colors"
-              >
-                Forgot password?
-              </Link>
-            </div>
+            <label className="block text-sm font-medium text-[#1B355E] mb-1">
+              Password
+            </label>
             <input
-              type="password"
               required
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy/20 focus:border-navy"
-              placeholder="••••••••"
+              className="w-full rounded-lg border border-[#E4E7EC] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1B355E]/20 focus:border-[#1B355E]"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 rounded-full bg-orange text-white text-sm font-bold py-3 hover:bg-orange-hover transition-colors disabled:opacity-60"
+            className="w-full flex items-center justify-center gap-2 rounded-lg bg-[#EE8B1B] text-white text-sm font-bold py-2.5 hover:bg-[#d97e12] transition-colors disabled:opacity-60"
           >
             {loading && <Loader2 className="w-4 h-4 animate-spin" />}
-            {loading ? "Signing in..." : "Sign in"}
+            {loading ? "Signing in..." : "Sign In"}
           </button>
 
-          <p className="text-center text-sm text-warm-gray pt-1">
+          <p className="text-center text-sm text-[#667085]">
             New here?{" "}
-            <Link href="/account/signup" className="font-medium text-navy hover:text-orange">
+            <Link
+              href={`/account/signup?redirect=${encodeURIComponent(redirectTo)}`}
+              className="font-medium text-[#1B355E] hover:text-[#EE8B1B]"
+            >
               Create an account
             </Link>
           </p>

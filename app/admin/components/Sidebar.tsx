@@ -49,7 +49,7 @@ const navGroups: NavGroup[] = [
   {
     title: "Sales",
     items: [
-      { label: "Orders", href: "/admin/orders", icon: ShoppingCart, soon: true },
+      { label: "Orders", href: "/admin/orders", icon: ShoppingCart },
       { label: "Reviews", href: "/admin/reviews", icon: Star, soon: true },
     ],
   },

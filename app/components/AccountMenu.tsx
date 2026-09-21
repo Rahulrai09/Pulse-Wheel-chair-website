@@ -48,7 +48,7 @@ export default function AccountMenu() {
       </button>
 
       <div
-        className={`absolute right-0 top-full z-50 w-72 pt-2 transition-all duration-200 ease-out ${
+        className={`absolute right-0 top-full z-50 w-72 max-w-[85vw] pt-2 transition-all duration-200 ease-out ${
           open ? "pointer-events-auto opacity-100 translate-y-0" : "pointer-events-none opacity-0 -translate-y-2"
         }`}
       >

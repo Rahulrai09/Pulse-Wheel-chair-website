@@ -102,13 +102,13 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             </div>
 
             {/* Thumbnail Row — only shows as many thumbnails as real images exist */}
-            <div className="flex items-center gap-3 justify-center sm:justify-start">
+            <div className="flex items-center gap-3 overflow-x-auto pb-1 justify-center sm:justify-start [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {thumbnails.map((thumb, idx) => (
                 <button
                   key={idx}
                   type="button"
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`relative h-20 w-20 rounded-2xl bg-gradient-to-b from-[#E2EDF7] to-[#F8FBFE] p-2 border transition-all overflow-hidden ${
+                  className={`relative h-20 w-20 flex-shrink-0 rounded-2xl bg-gradient-to-b from-[#E2EDF7] to-[#F8FBFE] p-2 border transition-all overflow-hidden ${
                     activeImageIndex === idx
                       ? "border-orange ring-2 ring-orange/30 shadow-md"
                       : "border-slate-200/80 opacity-70 hover:opacity-100"
@@ -154,7 +154,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             </p>
 
             {/* 4 Feature Badges Grid */}
-            <div className="mb-8 grid grid-cols-4 gap-3 rounded-2xl bg-white p-4 shadow-sm border border-slate-200/60">
+            <div className="mb-8 grid grid-cols-2 gap-3 rounded-2xl bg-white p-4 shadow-sm border border-slate-200/60 sm:grid-cols-4">
               {product.features.map((f, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center">
                   <div className="mb-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-orange/10 text-orange">

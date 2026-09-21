@@ -2,12 +2,8 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 const ADMIN_AUTH_PAGES = ["/admin/login", "/admin/forgot-password", "/admin/reset-password"];
-const ACCOUNT_AUTH_PAGES = [
-  "/account/login",
-  "/account/signup",
-  "/account/forgot-password",
-  "/account/reset-password",
-];
+const CUSTOMER_AUTH_PAGES = ["/account/login", "/account/signup"];
+const CUSTOMER_PROTECTED_PAGES = ["/checkout", "/account/orders"];
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request });
@@ -42,10 +38,8 @@ export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const isAdminRoute = pathname.startsWith("/admin");
   const isAdminAuthPage = ADMIN_AUTH_PAGES.includes(pathname);
-  const isAccountRoute = pathname.startsWith("/account");
-  const isAccountAuthPage = ACCOUNT_AUTH_PAGES.includes(pathname);
 
-  // --- Admin routes ---
+  // ---- Admin routes (unchanged) ----
   if (isAdminRoute && !isAdminAuthPage) {
     if (!user) {
       return NextResponse.redirect(new URL("/admin/login", request.url));
@@ -69,23 +63,20 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/admin/dashboard", request.url));
   }
 
-  // --- Customer account routes ---
-  if (isAccountRoute && !isAccountAuthPage) {
-    if (!user) {
-      return NextResponse.redirect(new URL("/account/login", request.url));
-    }
+  // ---- Customer routes (checkout + order history require login) ----
+  if (CUSTOMER_PROTECTED_PAGES.some((p) => pathname.startsWith(p)) && !user) {
+    const loginUrl = new URL("/account/login", request.url);
+    loginUrl.searchParams.set("redirect", pathname);
+    return NextResponse.redirect(loginUrl);
   }
 
-  // Already-signed-in customers don't need the login/signup screens again.
-  // (forgot-password/reset-password stay accessible even mid-session, since
-  // a password recovery link creates its own temporary session.)
-  if ((pathname === "/account/login" || pathname === "/account/signup") && user) {
-    return NextResponse.redirect(new URL("/account", request.url));
+  if (CUSTOMER_AUTH_PAGES.includes(pathname) && user) {
+    return NextResponse.redirect(new URL("/account/orders", request.url));
   }
 
   return response;
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/account/:path*"],
+  matcher: ["/admin/:path*", "/account/:path*", "/checkout"],
 };
