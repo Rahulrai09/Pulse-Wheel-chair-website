@@ -68,7 +68,7 @@ export default function Header() {
           {/* Search — expands from the icon, anchored to the row's right edge so it can't run off-screen on narrow phones */}
           <div className="flex items-center">
             <div
-              className={`absolute right-0 top-full mt-2 overflow-hidden transition-all duration-300 ease-out ${
+              className={`absolute right-0 top-full z-50 mt-2 overflow-hidden transition-all duration-300 ease-out ${
                 searchOpen ? "w-64 max-w-[calc(100vw-3rem)] opacity-100" : "w-0 opacity-0"
               }`}
             >
