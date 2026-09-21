@@ -64,12 +64,12 @@ export default function Header() {
         </Link>
 
         {/* Right — icon buttons */}
-        <div className="flex items-center gap-3">
-          {/* Search — expands inline to the left of the icon, doesn't push the layout */}
-          <div className="relative flex items-center">
+        <div className="relative flex items-center gap-3">
+          {/* Search — expands from the icon, anchored to the row's right edge so it can't run off-screen on narrow phones */}
+          <div className="flex items-center">
             <div
-              className={`absolute right-full top-1/2 mr-2 -translate-y-1/2 overflow-hidden transition-all duration-300 ease-out ${
-                searchOpen ? "w-64 max-w-[70vw] opacity-100" : "w-0 opacity-0"
+              className={`absolute right-0 top-full mt-2 overflow-hidden transition-all duration-300 ease-out ${
+                searchOpen ? "w-64 max-w-[calc(100vw-3rem)] opacity-100" : "w-0 opacity-0"
               }`}
             >
               <div className="flex items-center gap-2 rounded-full border border-slate-300 bg-white px-3 py-2 shadow-sm">
