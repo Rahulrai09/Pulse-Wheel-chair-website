@@ -21,7 +21,7 @@ import CallbackButton from "@/components/CallbackButton";
 /** Reusable wrapper so every category icon is the same size / color */
 function CategoryIcon({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-offwhite text-navy">
+    <div className="mx-auto mb-2 sm:mb-3 flex h-10 w-10 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-offwhite text-navy [&>svg]:h-4 [&>svg]:w-4 sm:[&>svg]:h-6 sm:[&>svg]:w-6">
       {children}
     </div>
   );
@@ -352,17 +352,17 @@ export default function Home() {
       <HeroCarousel />
 
       {/* ── Category cards ──────────────────────────────────────────────────── */}
-      <section className="mt-20 sm:mt-14 mx-auto w-full max-w-6xl px-6">
-        <div className="rounded-2xl bg-white p-4 sm:p-8 shadow-xl shadow-navy/5">
-          <div className="flex gap-4 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 lg:grid-cols-6">
+      <section className="mt-8 sm:mt-14 mx-auto w-full max-w-6xl px-4 sm:px-6">
+        <div className="rounded-2xl bg-white p-3 sm:p-8 shadow-xl shadow-navy/5">
+          <div className="flex gap-1 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:pb-0 lg:grid-cols-6">
             {categories.map((c) => (
               <a
                 key={c.label}
                 href="#"
-                className="group flex w-16 flex-shrink-0 flex-col items-center text-center transition-transform hover:-translate-y-1 sm:w-auto"
+                className="group flex w-[16%] min-w-[47px] flex-shrink-0 flex-col items-center text-center transition-transform hover:-translate-y-1 sm:w-auto sm:min-w-0"
               >
                 <CategoryIcon>{c.icon}</CategoryIcon>
-                <span className="text-[11px] leading-tight font-medium text-navy group-hover:text-orange transition-colors sm:text-sm">
+                <span className="text-[8px] leading-tight font-medium text-navy group-hover:text-orange transition-colors sm:text-sm">
                   {c.label}
                 </span>
               </a>
@@ -372,7 +372,7 @@ export default function Home() {
       </section>
 
       {/* ── Best Wheelchairs ────────────────────────────────────────────────── */}
-      <section className="mx-auto mt-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="mx-auto mt-10 sm:mt-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h2 className="text-3xl font-bold tracking-tight">Best Wheelchairs</h2>
         </div>
